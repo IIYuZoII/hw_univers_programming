@@ -13,7 +13,7 @@
 
 int main (){
 
-	int x = 2;
+	int x = 3;
 
 	int n_in_m1 = 0;
         char array_num_words[]="one,two,three,four,five,six,seven,eight,nine\0";
@@ -28,9 +28,9 @@ int main (){
 	int temp_count_letters = 0;
 	int count_letters = 0;
 	int count_words = 0;
-
+	int count_symbols = 0;
 	
-        char m2[count_letters];
+        //char m2[count_letters+1];
 
 	//Перебор чара, увеличение счётчика букв и его последующее обнуление при появление не буквенного символа и увеличение кол-ва слов
 	for (int i = 0; i < 60; i++){
@@ -43,6 +43,8 @@ int main (){
 		}*/
 		
 
+		count_symbols++;
+
 		//Увеличение счётчиа кол-ва букв и его обнуление при достижении запятой или конца строки (для того чтобы начать записывать кол-во букв след. слова) а так же счётчик слов
 		if (array_num_words[i] != ',' && array_num_words[i] != '\0'){
 			temp_count_letters++;
@@ -52,20 +54,33 @@ int main (){
 			temp_count_letters = 0;
 		}
 
-		if (count_words == x - 1 && array_num_words[i] != ','){
-			printf ("%c\n", array_num_words[i]);
-			m2[i] = array_num_words[i];
+		if (count_words == x /*&& array_num_words[i] != ','*/){
+			//printf ("%c\n", array_num_words[i]);
+			//m2[i] = array_num_words[i];
+			count_words--;
+			break;
 
-		}		
+		}	
 
 
 		//Проверка конца строки и остановка цикла при её достижении
 		if (array_num_words[i] == '\0'){
 			break;
 		}	
+	}
 
-	
-	
+	char m2[count_letters+1];
+	int temp = count_letters;
+
+	for (int i = 0; i < 60; i++){
+		if (count_words == x - 1 && array_num_words[i] != ','){
+                        //printf ("%c\n", array_num_words[i]);
+                        m2[i] = array_num_words[i];
+			temp--;
+                }
+		if (temp == 0){
+			break;
+		}
 	}
 
 
