@@ -13,7 +13,7 @@
 
 int main (){
 
-	int x = 3;
+	int x = 1;
 
 	int n_in_m1 = 0;
         char array_num_words[]="one,two,three,four,five,six,seven,eight,nine\0";
@@ -70,23 +70,31 @@ int main (){
 	}
 
 	char m2[count_letters+1];
-	int temp = count_letters;
+	//int temp = count_letters;
+	int temp = 0;
+	int temp_left = count_symbols - count_letters - 1;
+	int temp_right = count_symbols - 1;
 
-	for (int i = 0; i < 60; i++){
-		if (count_words == x - 1 && array_num_words[i] != ','){
+	for (int i = temp_left; i < temp_right; i++){
+		/*if (count_words == x - 1 && array_num_words[i] != ','){ //Помойка какая-то
                         //printf ("%c\n", array_num_words[i]);
                         m2[i] = array_num_words[i];
 			temp--;
-                }
-		if (temp == 0){
+                }*/
+
+		m2[temp] = array_num_words[i];
+		temp++;
+		/*if (temp == 0){ //Продолжение помойки
 			break;
-		}
+		}*/
 	}
 
-
-
+	printf ("\nВведена цифра: ");
+	printf ("%d\n", x);
+	printf ("\nСлово: ");
 	printf ("%s\n", m2);
-	printf ("%d", count_words);
+
+	//printf ("%d", count_words);
 	printf ("\n");
 
         return (0);
