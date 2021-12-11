@@ -16,7 +16,7 @@ int main (){
 	//int testInput = 20;
 	//int test = testInput / 10;
 	
-	int x = 13;
+	int x = 1999;
 	
 	//Единица = 0
 	//Десяток = 1
@@ -31,10 +31,10 @@ int main (){
 	int ten_num = 0;
 	int n_num = 0;
 
-	
+	int space_count = 0;
 
 	//Определение разрядности числа
-	if ((x / 10) < 1000){
+	if (x < 10000 && x >= 0){
     	if (x / 10 < 1){
     	    x_is = 0;
     	} else if (x / 10 >= 1 && (x / 10) < 10) {
@@ -59,6 +59,8 @@ int main (){
     	hun_num = (x / 100) % 10;
 	    ten_num = (x / 10) % 10;
     	n_num = x % 10;
+	} else {
+		n_num = x;
 	}
 
 	if (n_num > 0 && n_num < 10 && ten_num == 1){
@@ -69,27 +71,36 @@ int main (){
 		ten_type = 1;
 	}
 
-	// if (x_is == 1){
-	// 	if (x > 10 && x < 20){
-	// 		ten_type = 2;
-	// 	} else if (x % 10 == 0){
-	// 		ten_type = 0;
-	// 	} else {
-	// 		ten_type = 1;
-	// 	}
-	// } else if (x_is == 2){
-	// 	if (n_num > 0 && n_num < 10 && ten_num == 1){
-	// 		ten_type = 2;
-	// 	}
-	// }
-	
-	//int t = 13;
-	//int t_n; //Переменная для единицы из десятка (число 12 - единица 2)
-	//int t_ten; переменная для десятка (хз зачем)
-	
-	/*if (t > 10 && t < 20){
-		t_n = t % 10; //Записываем единицу из десятка
-	} */
+	//Считаем кол-во пробелов
+	if (x_is == 1) {
+		if (ten_type == 1) {
+			space_count++;
+		}
+	} else if (x_is == 2){
+		space_count++;
+		if (ten_num != 0){
+			space_count++;
+			if (ten_type == 1){
+				space_count++;
+			}
+		}
+	} else if (x_is == 3){
+		space_count++;
+		if (hun_num != 0){
+			space_count++;
+		}
+		if (ten_num != 0){
+			space_count++;
+			if (ten_type == 1){
+				space_count++;
+			}
+		} else {
+			if (n_num != 0){
+				space_count++;
+			}
+		}
+	}
+
 
 
     char array_num_words[]="one,two,three,four,five,six,seven,eight,nine\0"; //Строка для цифр
@@ -120,7 +131,18 @@ int main (){
 	int count_words_clean_ten_words = 0; //Счётчик слов
 	int count_symbols_clean_ten_words = 0; //Счётчик кол-ва символов в строке
 
-	
+	//Переменные для числа сотни
+	int temp_count_letters_num_hun_words = 0; //Временный счётчик символов внутри слова
+	int count_letters_num_hun_words = 0; //Счётчик символов внутри слова
+	int count_words_num_hun_words = 0; //Счётчик слов
+	int count_symbols_num_hun_words = 0; //Счётчик кол-ва символов в строке
+
+	//Переменные для числа тысячи
+	int temp_count_letters_num_thous_words = 0; //Временный счётчик символов внутри слова
+	int count_letters_num_thous_words = 0; //Счётчик символов внутри слова
+	int count_words_num_thous_words = 0; //Счётчик слов
+	int count_symbols_num_thous_words = 0; //Счётчик кол-ва символов в строке
+
 
 	//Начало волшебства
     //Блок в зависимости от значения x_is использует только нужные переменные
@@ -292,7 +314,7 @@ int main (){
 						temp_count_letters_irregular_ten_words = 0;
 					}
 
-					if (count_words_irregular_ten_words == ten_num){
+					if (count_words_irregular_ten_words == n_num){
 						break;
 					}
 
@@ -332,19 +354,19 @@ int main (){
 		//Поиск границ сотни
 		for (int i = 0; i < 120; i++){		
 			//С каждым символом счётчик увеличивается т.к. мы ищем границы слова
-			count_symbols_num_words++;
+			count_symbols_num_hun_words++;
 
 			//Увеличение счётчиа кол-ва букв и его обнуление при достижении запятой или конца строки (для того чтобы начать записывать кол-во букв след. слова) а так же счётчик слов
 			if (array_num_words[i] != ',' && array_num_words[i] != '\0'){
-				temp_count_letters_num_words++;
+				temp_count_letters_num_hun_words++;
 			} else {
-				count_words_num_words++; //При достижении запятой счётчик слов ++
-				count_letters_num_words = temp_count_letters_num_words; //Счётчик букв в слове принимает значение временного счётчика букв слове чтобы освободить временную переменную
-				temp_count_letters_num_words = 0; //Обнуление временного счётчика букв в слове
+				count_words_num_hun_words++; //При достижении запятой счётчик слов ++
+				count_letters_num_hun_words = temp_count_letters_num_hun_words; //Счётчик букв в слове принимает значение временного счётчика букв слове чтобы освободить временную переменную
+				temp_count_letters_num_hun_words = 0; //Обнуление временного счётчика букв в слове
 			}
 		
 			//Если счётчик слов равен числу "х", тогда ломаем цикл так как мы уже полностью прошли нужное число, и отнимаем от счётчика 1 так как он далее будет служить айди слова
-			if (count_words_num_words == hun_num){
+			if (count_words_num_hun_words == hun_num){
 				//count_words_num_words--; //отнимаем 1 так как счётчик будет служить айди слова ((((НЕ АКТУАЛЬНО так как я сделал решение через границы слова))))
 				break;
 			}
@@ -358,15 +380,15 @@ int main (){
 		if (hun_num != 0){ //Если сотня есть ищем единицу сотни
 			for (int i = 0; i < 120; i++){		
 				//С каждым символом счётчик увеличивается т.к. мы ищем границы слова
-				count_symbols_num_words++;
+				count_symbols_num_hun_words++;
 
 				//Увеличение счётчиа кол-ва букв и его обнуление при достижении запятой или конца строки (для того чтобы начать записывать кол-во букв след. слова) а так же счётчик слов
 				if (array_num_words[i] != ',' && array_num_words[i] != '\0'){
-					temp_count_letters_num_words++;
+					temp_count_letters_num_hun_words++;
 				} else {
-					count_words_num_words++; //При достижении запятой счётчик слов ++
-					count_letters_num_words = temp_count_letters_num_words; //Счётчик букв в слове принимает значение временного счётчика букв слове чтобы освободить временную переменную
-					temp_count_letters_num_words = 0; //Обнуление временного счётчика букв в слове
+					count_words_num_hun_words++; //При достижении запятой счётчик слов ++
+					count_letters_num_hun_words = temp_count_letters_num_hun_words; //Счётчик букв в слове принимает значение временного счётчика букв слове чтобы освободить временную переменную
+					temp_count_letters_num_hun_words = 0; //Обнуление временного счётчика букв в слове
 				}
 		
 				//Если счётчик слов равен числу "х", тогда ломаем цикл так как мы уже полностью прошли нужное число, и отнимаем от счётчика 1 так как он далее будет служить айди слова
@@ -458,7 +480,7 @@ int main (){
 						temp_count_letters_irregular_ten_words = 0;
 					}
 
-					if (count_words_irregular_ten_words == ten_num){
+					if (count_words_irregular_ten_words == n_num){
 						break;
 					}
 
@@ -495,21 +517,21 @@ int main (){
 				}
 			}
 		}
-		//Поиск числа для сотни
+		//Поиск числа для тысячи
 		for (int i = 0; i < 120; i++){		
 		//С каждым символом счётчик увеличивается т.к. мы ищем границы слова
-		count_symbols_num_words++;
+		count_symbols_num_thous_words++;
 
 		//Увеличение счётчиа кол-ва букв и его обнуление при достижении запятой или конца строки (для того чтобы начать записывать кол-во букв след. слова) а так же счётчик слов
 		if (array_num_words[i] != ',' && array_num_words[i] != '\0'){
-			temp_count_letters_num_words++;
+			temp_count_letters_num_thous_words++;
 		} else {
-			count_words_num_words++; //При достижении запятой счётчик слов ++
-			count_letters_num_words = temp_count_letters_num_words; //Счётчик букв в слове принимает значение временного счётчика букв слове чтобы освободить временную переменную
-			temp_count_letters_num_words = 0; //Обнуление временного счётчика букв в слове
+			count_words_num_thous_words++; //При достижении запятой счётчик слов ++
+			count_letters_num_thous_words = temp_count_letters_num_thous_words; //Счётчик букв в слове принимает значение временного счётчика букв слове чтобы освободить временную переменную
+			temp_count_letters_num_thous_words = 0; //Обнуление временного счётчика букв в слове
 		}
 		
-		if (count_words_num_words == thous_num){
+		if (count_words_num_thous_words == thous_num){
 			break;
 		}
 
@@ -518,6 +540,28 @@ int main (){
 			break;
 		}	
 	}
+	} else { //Если число единица
+		for (int i = 0; i < 120; i++){	
+					//С каждым символом счётчик увеличивается т.к. мы ищем границы слова
+					count_symbols_num_words++;
+
+					//Увеличение счётчиа кол-ва букв и его обнуление при достижении запятой или конца строки (для того чтобы начать записывать кол-во букв след. слова) а так же счётчик слов
+					if (array_num_words[i] != ',' && array_num_words[i] != '\0'){
+						temp_count_letters_num_words++;
+					} else {
+						count_words_num_words++; //При достижении запятой счётчик слов ++
+						count_letters_num_words = temp_count_letters_num_words; //Счётчик букв в слове принимает значение временного счётчика букв слове чтобы освободить временную переменную
+						temp_count_letters_num_words = 0; //Обнуление временного счётчика букв в слове
+					}
+					if (count_words_num_words == n_num){
+						break;
+					}
+
+					//Проверка конца строки и остановка цикла при её достижении
+					if (array_num_words[i] == '\0'){
+						break;
+					}
+				}
 	}
 
 	/**************************************************** КОНЕЦ БЛОКА *********************************************************/
@@ -603,7 +647,11 @@ int main (){
 	/**********************************ОПЕРАЦИИ С ЗАНЕСЕНИЕМ РЕЗУЛЬТАТА**************************************************/
 
 	//Переменная которая считает кол-во пробелов               Нужно научить её это делать
-	int space_count = 0;
+	// int space_count = 0;
+
+
+
+
 	//Переменная для длинны результативного массива, с учётом кол-ва пробелов
 	int len_m2 = space_count + count_letters_num_words + count_letters_irregular_ten_words + count_letters_clean_ten_words;
 
@@ -625,8 +673,142 @@ int main (){
 	int temp_left_clean_ten_words = count_symbols_clean_ten_words - count_letters_clean_ten_words - 1;
 	int temp_right_clean_ten_words = count_symbols_clean_ten_words - 1;
 
+	//Переменные для поиска границ слова в строке единиц для сотни
+	int temp_left_num_hun_words = count_symbols_num_hun_words - count_letters_num_hun_words - 1;
+	int temp_right_num_hun_words = count_symbols_num_hun_words - 1;
+
+	//Переменные для поиска границ слова в строке единиц для тысячи
+	int temp_left_num_thous_words = count_symbols_num_thous_words - count_letters_num_thous_words - 1;
+	int temp_right_num_thous_words = count_symbols_num_thous_words - 1;
+
+
 	char space = ' ';
 	char spec_symbol_end = '\0';
+
+
+	if (x_is == 0){ //Если число цифра
+		for (int i = temp_left_num_words; i < temp_right_num_words; i++){
+			m2[temp] = array_num_words[i];
+			temp++;
+		}
+	} else if (x_is == 1){ //Если число десяток
+		if (ten_type == 0){ //Если десяток чистый
+			for (int i = temp_left_clean_ten_words; i < temp_right_clean_ten_words; i++){
+				m2[temp] = array_clean_ten_words[i];
+				temp++;
+			}
+		} else if (ten_type == 1) { //Если десяток чистый с цифрой
+			for (int i = temp_left_clean_ten_words; i < temp_right_clean_ten_words; i++){
+				m2[temp] = array_clean_ten_words[i];
+				temp++;
+			}
+						
+			m2[temp] = space;
+			temp++;
+
+			for (int i = temp_left_num_words; i < temp_right_num_words; i++){
+				m2[temp] = array_num_words[i];
+				temp++;
+				if (temp + 1 == len_m2){
+		 			m2[temp + 1] = spec_symbol_end;
+			 	}
+			}
+
+		} else if (ten_type == 2) { //Если десяток неправильный
+			for (int i = temp_left_irregular_ten_words; i < temp_right_irregular_ten_words; i++){
+				m2[temp] = array_irregular_ten_words [i];
+				if (temp + 1 == len_m2){
+					m2[temp + 1] = spec_symbol_end;
+				}
+				temp++;
+			}
+		}
+	} else if (x_is == 2){ //Если число сотня
+		//Единица сотни
+		for (int i = temp_left_num_hun_words; i < temp_right_num_hun_words; i++){
+			m2[temp] = array_num_words[i];
+			temp++;
+		}
+		if (ten_num != 0){ //Если есть десяток
+			if (ten_type == 0){ //Если десяток чистый
+				for (int i = temp_left_clean_ten_words; i < temp_right_clean_ten_words; i++){
+					m2[temp] = array_clean_ten_words[i];
+					temp++;
+				}
+			} else if (ten_type == 1){ //Если десяток чистый с цифрой
+				for (int i = temp_left_clean_ten_words; i < temp_right_clean_ten_words; i++){
+					m2[temp] = array_clean_ten_words[i];
+					temp++;
+				}
+						
+				m2[temp] = space;
+				temp++;
+
+				for (int i = temp_left_num_words; i < temp_right_num_words; i++){
+					m2[temp] = array_num_words[i];
+					temp++;
+					if (temp + 1 == len_m2){
+		 				m2[temp + 1] = spec_symbol_end;
+			 		}
+				}
+			} else if (ten_type == 2){ //Если десяток неправильный
+				for (int i = temp_left_irregular_ten_words; i < temp_right_irregular_ten_words; i++){
+					m2[temp] = array_irregular_ten_words [i];
+					if (temp + 1 == len_m2){
+						m2[temp + 1] = spec_symbol_end;
+					}
+					temp++;
+				}
+			}
+		}
+	} else if (x_is == 3){
+		if (hun_num != 0){ //Если есть сотня
+			for (int i = temp_left_num_hun_words; i < temp_right_num_hun_words; i++){
+				m2[temp] = array_num_words[i];
+				temp++;
+			}
+		} 
+		if (ten_num != 0){
+			if (ten_type == 0){ //Если десяток чистый
+				for (int i = temp_left_clean_ten_words; i < temp_right_clean_ten_words; i++){
+					m2[temp] = array_clean_ten_words[i];
+					temp++;
+				}
+			} else if (ten_type == 1){ //Если десяток чистый с цифрой
+				for (int i = temp_left_clean_ten_words; i < temp_right_clean_ten_words; i++){
+					m2[temp] = array_clean_ten_words[i];
+					temp++;
+				}
+						
+				m2[temp] = space;
+				temp++;
+
+				for (int i = temp_left_num_words; i < temp_right_num_words; i++){
+					m2[temp] = array_num_words[i];
+					temp++;
+					if (temp + 1 == len_m2){
+		 				m2[temp + 1] = spec_symbol_end;
+			 		}
+				}
+			} else if (ten_type == 2){ //Если десяток неправильный
+				for (int i = temp_left_irregular_ten_words; i < temp_right_irregular_ten_words; i++){
+					m2[temp] = array_irregular_ten_words [i];
+					if (temp + 1 == len_m2){
+						m2[temp + 1] = spec_symbol_end;
+					}
+					temp++;
+				}
+			}
+		}
+	}
+	
+		
+		//if (){
+
+		
+	
+
+
 	//Запись цифры в словесном виде в финальный массив
 	// for (int i = temp_left_num_words; i < temp_right_num_words; i++){
 	// 	m2[temp] = array_num_words[i];
@@ -638,13 +820,13 @@ int main (){
 	// temp += 1; //Увеличиваем временную переменную чтобы учесть пробел
 	
 	//Запись десятка в тот же массив как продолжение
-	for (int i = temp_left_irregular_ten_words; i < temp_right_irregular_ten_words; i++){
-		m2[temp] = array_irregular_ten_words [i];
-		if (temp + 1 == len_m2){
-			m2[temp + 1] = spec_symbol_end;
-		}
-		temp++;
-	}
+	// for (int i = temp_left_irregular_ten_words; i < temp_right_irregular_ten_words; i++){
+	// 	m2[temp] = array_irregular_ten_words [i];
+	// 	if (temp + 1 == len_m2){
+	// 		m2[temp + 1] = spec_symbol_end;
+	// 	}
+	// 	temp++;
+	// }
 
 	// m2[temp] = space;
 	// temp += 1;
