@@ -16,7 +16,7 @@ int main (){
 	//int testInput = 20;
 	//int test = testInput / 10;
 	
-	int x = 113;
+	int x = 13;
 	
 	//Единица = 0
 	//Десяток = 1
@@ -123,7 +123,7 @@ int main (){
 	
 
 	//Начало волшебства
-
+    //Блок в зависимости от значения x_is использует только нужные переменные
 	/******************************** БЛОК ОТВЕЧАЮЩИЙ ЗА ПОИСК ГРАНИЦ НУЖНЫХ СЛОВ В ЗАВИСИМОСТИ ОТ ЧИСЛА *********************************/
 	if (x_is == 1){ //Если число десяток
 		if (ten_type == 2){ //Если десяток неправильный
@@ -138,7 +138,7 @@ int main (){
 					temp_count_letters_irregular_ten_words = 0;
 				}
 
-				if (count_words_irregular_ten_words == ten_num){
+				if (count_words_irregular_ten_words == n_num){
 					break;
 				}
 				//Проверка конца строки и остановка цикла при её достижении
@@ -495,6 +495,29 @@ int main (){
 				}
 			}
 		}
+		//Поиск числа для сотни
+		for (int i = 0; i < 120; i++){		
+		//С каждым символом счётчик увеличивается т.к. мы ищем границы слова
+		count_symbols_num_words++;
+
+		//Увеличение счётчиа кол-ва букв и его обнуление при достижении запятой или конца строки (для того чтобы начать записывать кол-во букв след. слова) а так же счётчик слов
+		if (array_num_words[i] != ',' && array_num_words[i] != '\0'){
+			temp_count_letters_num_words++;
+		} else {
+			count_words_num_words++; //При достижении запятой счётчик слов ++
+			count_letters_num_words = temp_count_letters_num_words; //Счётчик букв в слове принимает значение временного счётчика букв слове чтобы освободить временную переменную
+			temp_count_letters_num_words = 0; //Обнуление временного счётчика букв в слове
+		}
+		
+		if (count_words_num_words == thous_num){
+			break;
+		}
+
+		//Проверка конца строки и остановка цикла при её достижении
+		if (array_num_words[i] == '\0'){
+			break;
+		}	
+	}
 	}
 
 	/**************************************************** КОНЕЦ БЛОКА *********************************************************/
@@ -580,7 +603,7 @@ int main (){
 	/**********************************ОПЕРАЦИИ С ЗАНЕСЕНИЕМ РЕЗУЛЬТАТА**************************************************/
 
 	//Переменная которая считает кол-во пробелов               Нужно научить её это делать
-	int space_count = 2;
+	int space_count = 0;
 	//Переменная для длинны результативного массива, с учётом кол-ва пробелов
 	int len_m2 = space_count + count_letters_num_words + count_letters_irregular_ten_words + count_letters_clean_ten_words;
 
@@ -603,31 +626,34 @@ int main (){
 	int temp_right_clean_ten_words = count_symbols_clean_ten_words - 1;
 
 	char space = ' ';
-
+	char spec_symbol_end = '\0';
 	//Запись цифры в словесном виде в финальный массив
-	for (int i = temp_left_num_words; i < temp_right_num_words; i++){
-		m2[temp] = array_num_words[i];
-		temp++;
-	}
-	//Добавляем пробел после первого слова
+	// for (int i = temp_left_num_words; i < temp_right_num_words; i++){
+	// 	m2[temp] = array_num_words[i];
+	// 	temp++;
+	// }
+	// //Добавляем пробел после первого слова
 	
-	m2[temp] = space;
-	temp += 1; //Увеличиваем временную переменную чтобы учесть пробел
+	// m2[temp] = space;
+	// temp += 1; //Увеличиваем временную переменную чтобы учесть пробел
 	
 	//Запись десятка в тот же массив как продолжение
 	for (int i = temp_left_irregular_ten_words; i < temp_right_irregular_ten_words; i++){
 		m2[temp] = array_irregular_ten_words [i];
+		if (temp + 1 == len_m2){
+			m2[temp + 1] = spec_symbol_end;
+		}
 		temp++;
 	}
 
-	m2[temp] = space;
-	temp += 1;
+	// m2[temp] = space;
+	// temp += 1;
 
-	//Запись чистого десятка как продолжение
-	for (int i = temp_left_clean_ten_words; i < temp_right_clean_ten_words; i++){
-		m2[temp] = array_clean_ten_words[i];
-		temp++;
-	}
+	// //Запись чистого десятка как продолжение
+	// for (int i = temp_left_clean_ten_words; i < temp_right_clean_ten_words; i++){
+	// 	m2[temp] = array_clean_ten_words[i];
+	// 	temp++;
+	// }
 
 	// printf ("\nВведена цифра: ");
 	// printf ("%d\n", x);
@@ -635,7 +661,7 @@ int main (){
 	printf ("%s\n", m2);
 
 	//printf ("%d", count_words);
-	printf ("\n");
+	//printf ("\n");
 	
     return (0);
 
