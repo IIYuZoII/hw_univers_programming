@@ -247,3 +247,4 @@ int main (){
 
 
 }
+// https://englishexplained.ru/numerals-5-rules/

@@ -16,19 +16,22 @@ int main (){
 	int testInput = 20;
 	int test = testInput / 10;
 	
-	int x = 103;
+	int x = 11 3;
 	
 	//Единица = 0
 	//Десяток = 1
 	//Сотня = 2
 	//Тысяча = 3
 	int x_is = 0;
+	int ten_type = 0; //0 - Чистый; 1 - Чистый с цифрой; 2 - Неправильный
 
 	//Переменные разрядов
 	int thous_num = 0;
 	int hun_num = 0;
 	int ten_num = 0;
 	int n_num = 0;
+
+	
 
 	//Определение разрядности числа
 	if ((x / 10) < 1000){
@@ -58,6 +61,15 @@ int main (){
     	n_num = x % 10;
 	}
 
+	if (x_is == 1){
+		if (x > 10 && x < 20){
+			ten_type = 2;
+		} else if (x % 10 == 0){
+			ten_type = 0;
+		} else {
+			ten_type = 1;
+		}
+	}
 	int t = 13;
 	int t_n; //Переменная для единицы из десятка (число 12 - единица 2)
 	//int t_ten; переменная для десятка (хз зачем)
@@ -70,7 +82,8 @@ int main (){
     char array_num_words[]="one,two,three,four,five,six,seven,eight,nine\0"; //Строка для цифр
 	char array_irregular_ten_words[]="eleven,twelve,thirteen,fourteen,fifteen,sixteen,seventeen,eighteen,nineteen\0"; //Строка для десятков (от 11 до 19 включительно)
 	char array_clean_ten_words[]="ten,twenty,thirty,forty,fifty,sixty,seventy,eighty,ninety\0"; //Строка для "чистых" чисел
-
+	char word_thous[]="thousand";
+	char word_hun[]="hundred";
 
 	//Вывод всего массива чисел в виде слов
     printf ("%s\n", array_num_words);
@@ -98,7 +111,7 @@ int main (){
 
 	//Начало волшебства
 	if (x_is == 1){ //Если число десяток
-		if (x > 10 && x < 20){ //Если десяток неправильный
+		if (ten_type == 2){ //Если десяток неправильный
 			for (int i = 0; i < 200; i++){
 				count_symbols_irregular_ten_words++;
 
@@ -127,7 +140,7 @@ int main (){
 					break;
 				}
 			}
-		} else if (x % 10 == 0) { //Если десяток чистый и не имеет единиц (10, 20, 30, ..., 90)
+		} else if (ten_type == 0) { //Если десяток чистый и не имеет единиц (10, 20, 30, ..., 90)
 			for (int i = 0; i < 100; i++){
 				count_symbols_clean_ten_words++;
 
@@ -146,6 +159,51 @@ int main (){
 				if (array_clean_ten_words[i] == '\0'){
 					break;
 				}
+			}
+		} else { //Используем поиск чистого десятка + цифры
+			//Поиск границ чистых десятков
+			for (int i = 0; i < 100; i++){ 
+				count_symbols_clean_ten_words++;
+
+				if (array_clean_ten_words[i] != ',' && array_clean_ten_words[i] != '\0'){
+					temp_count_letters_clean_ten_words++;
+				} else {
+					count_words_clean_ten_words++;
+					count_letters_clean_ten_words = temp_count_letters_clean_ten_words;
+					temp_count_letters_clean_ten_words = 0;
+				}
+
+				if (count_words_clean_ten_words == test){
+					break;
+				}
+
+				if (array_clean_ten_words[i] == '\0'){
+					break;
+				}
+			}
+			//Поиск границ цифр
+			for (int i = 0; i < 120; i++){		
+				//С каждым символом счётчик увеличивается т.к. мы ищем границы слова
+				count_symbols_num_words++;
+
+				//Увеличение счётчиа кол-ва букв и его обнуление при достижении запятой или конца строки (для того чтобы начать записывать кол-во букв след. слова) а так же счётчик слов
+				if (array_num_words[i] != ',' && array_num_words[i] != '\0'){
+					temp_count_letters_num_words++;
+				} else {
+					count_words_num_words++; //При достижении запятой счётчик слов ++
+					count_letters_num_words = temp_count_letters_num_words; //Счётчик букв в слове принимает значение временного счётчика букв слове чтобы освободить временную переменную
+					temp_count_letters_num_words = 0; //Обнуление временного счётчика букв в слове
+				}
+
+				//Если счётчик слов равен числу "х", тогда ломаем цикл так как мы уже полностью прошли нужное число, и отнимаем от счётчика 1 так как он далее будет служить айди слова
+				if (count_words_num_words == x){
+					break;
+				}
+
+				//Проверка конца строки и остановка цикла при её достижении
+				if (array_num_words[i] == '\0'){
+					break;
+				}	
 			}
 		}
 
