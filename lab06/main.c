@@ -13,10 +13,10 @@
 
 int main (){
 
-	int testInput = 20;
-	int test = testInput / 10;
+	//int testInput = 20;
+	//int test = testInput / 10;
 	
-	int x = 11 3;
+	int x = 113;
 	
 	//Единица = 0
 	//Десяток = 1
@@ -61,22 +61,35 @@ int main (){
     	n_num = x % 10;
 	}
 
-	if (x_is == 1){
-		if (x > 10 && x < 20){
-			ten_type = 2;
-		} else if (x % 10 == 0){
-			ten_type = 0;
-		} else {
-			ten_type = 1;
-		}
+	if (n_num > 0 && n_num < 10 && ten_num == 1){
+		ten_type = 2;
+	} else if (ten_num == 1 && n_num == 0){
+		ten_type = 0;
+	} else if (ten_num > 1 && n_num != 0){
+		ten_type = 1;
 	}
-	int t = 13;
-	int t_n; //Переменная для единицы из десятка (число 12 - единица 2)
-	//int t_ten; переменная для десятка (хз зачем)
 
-	if (t > 10 && t < 20){
+	// if (x_is == 1){
+	// 	if (x > 10 && x < 20){
+	// 		ten_type = 2;
+	// 	} else if (x % 10 == 0){
+	// 		ten_type = 0;
+	// 	} else {
+	// 		ten_type = 1;
+	// 	}
+	// } else if (x_is == 2){
+	// 	if (n_num > 0 && n_num < 10 && ten_num == 1){
+	// 		ten_type = 2;
+	// 	}
+	// }
+	
+	//int t = 13;
+	//int t_n; //Переменная для единицы из десятка (число 12 - единица 2)
+	//int t_ten; переменная для десятка (хз зачем)
+	
+	/*if (t > 10 && t < 20){
 		t_n = t % 10; //Записываем единицу из десятка
-	}
+	} */
 
 
     char array_num_words[]="one,two,three,four,five,six,seven,eight,nine\0"; //Строка для цифр
@@ -86,8 +99,8 @@ int main (){
 	char word_hun[]="hundred";
 
 	//Вывод всего массива чисел в виде слов
-    printf ("%s\n", array_num_words);
-	printf ("%s\n", array_irregular_ten_words);
+    // printf ("%s\n", array_num_words);
+	// printf ("%s\n", array_irregular_ten_words);
 
 	//Переменные для строки с цифрами
 	int temp_count_letters_num_words = 0; //Временный счётчик символов внутри слова
@@ -107,9 +120,11 @@ int main (){
 	int count_words_clean_ten_words = 0; //Счётчик слов
 	int count_symbols_clean_ten_words = 0; //Счётчик кол-ва символов в строке
 
-
+	
 
 	//Начало волшебства
+
+	/******************************** БЛОК ОТВЕЧАЮЩИЙ ЗА ПОИСК ГРАНИЦ НУЖНЫХ СЛОВ В ЗАВИСИМОСТИ ОТ ЧИСЛА *********************************/
 	if (x_is == 1){ //Если число десяток
 		if (ten_type == 2){ //Если десяток неправильный
 			for (int i = 0; i < 200; i++){
@@ -123,18 +138,9 @@ int main (){
 					temp_count_letters_irregular_ten_words = 0;
 				}
 
-				if (count_words_irregular_ten_words == t_n){
+				if (count_words_irregular_ten_words == ten_num){
 					break;
 				}
-				//Перебор числа и его вывод в консоль, вместо запятых ставим пробелы
-		// if (array_irregular_ten_words[i] != ','){
-		// 	printf ("%c", array_irregular_ten_words[i]);
-		// } else if (array_irregular_ten_words[i] == ','){
-		// 	printf ("%s", " ");
-		// } else {
-		// 	printf ("\n\n");
-		// }	
-
 				//Проверка конца строки и остановка цикла при её достижении
 				if (array_irregular_ten_words[i] == '\0'){
 					break;
@@ -152,7 +158,7 @@ int main (){
 					temp_count_letters_clean_ten_words = 0;
 				}
 
-				if (count_words_clean_ten_words == test){
+				if (count_words_clean_ten_words == ten_num){
 					break;
 				}
 
@@ -160,7 +166,7 @@ int main (){
 					break;
 				}
 			}
-		} else { //Используем поиск чистого десятка + цифры
+		} else { //Если десяток чистый + цифры
 			//Поиск границ чистых десятков
 			for (int i = 0; i < 100; i++){ 
 				count_symbols_clean_ten_words++;
@@ -173,7 +179,7 @@ int main (){
 					temp_count_letters_clean_ten_words = 0;
 				}
 
-				if (count_words_clean_ten_words == test){
+				if (count_words_clean_ten_words == ten_num){
 					break;
 				}
 
@@ -196,7 +202,7 @@ int main (){
 				}
 
 				//Если счётчик слов равен числу "х", тогда ломаем цикл так как мы уже полностью прошли нужное число, и отнимаем от счётчика 1 так как он далее будет служить айди слова
-				if (count_words_num_words == x){
+				if (count_words_num_words == n_num){
 					break;
 				}
 
@@ -208,6 +214,122 @@ int main (){
 		}
 
 	} else if (x_is == 2){ //Если число сотня 
+		if (ten_num != 0){ //Если десяток есть
+			if (ten_type == 0){ //Если десяток чистый без цифры
+				for (int i = 0; i < 100; i++){
+				count_symbols_clean_ten_words++;
+
+				if (array_clean_ten_words[i] != ',' && array_clean_ten_words[i] != '\0'){
+					temp_count_letters_clean_ten_words++;
+				} else {
+					count_words_clean_ten_words++;
+					count_letters_clean_ten_words = temp_count_letters_clean_ten_words;
+					temp_count_letters_clean_ten_words = 0;
+				}
+
+				if (count_words_clean_ten_words == ten_num){
+					break;
+				}
+
+				if (array_clean_ten_words[i] == '\0'){
+					break;
+				}
+			}
+			} else if (ten_type == 1){ //Если десяток чистый с цифрой
+				for (int i = 0; i < 100; i++){
+					count_symbols_clean_ten_words++;
+
+					if (array_clean_ten_words[i] != ',' && array_clean_ten_words[i] != '\0'){
+						temp_count_letters_clean_ten_words++;
+					} else {
+						count_words_clean_ten_words++;
+						count_letters_clean_ten_words = temp_count_letters_clean_ten_words;
+						temp_count_letters_clean_ten_words = 0;
+					}
+
+					if (count_words_clean_ten_words == ten_num){
+						break;
+					}
+
+					if (array_clean_ten_words[i] == '\0'){
+						break;
+					}
+				}
+
+				//Поиск границ цифр
+				for (int i = 0; i < 120; i++){		
+					//С каждым символом счётчик увеличивается т.к. мы ищем границы слова
+					count_symbols_num_words++;
+
+					//Увеличение счётчиа кол-ва букв и его обнуление при достижении запятой или конца строки (для того чтобы начать записывать кол-во букв след. слова) а так же счётчик слов
+					if (array_num_words[i] != ',' && array_num_words[i] != '\0'){
+						temp_count_letters_num_words++;
+					} else {
+						count_words_num_words++; //При достижении запятой счётчик слов ++
+						count_letters_num_words = temp_count_letters_num_words; //Счётчик букв в слове принимает значение временного счётчика букв слове чтобы освободить временную переменную
+						temp_count_letters_num_words = 0; //Обнуление временного счётчика букв в слове
+					}
+
+					//Если счётчик слов равен числу "х", тогда ломаем цикл так как мы уже полностью прошли нужное число, и отнимаем от счётчика 1 так как он далее будет служить айди слова
+					if (count_words_num_words == n_num){
+						break;
+					}
+
+					//Проверка конца строки и остановка цикла при её достижении
+					if (array_num_words[i] == '\0'){
+						break;
+					}	
+				}
+			} else { //Если десяток неправильный
+				for (int i = 0; i < 200; i++){
+					count_symbols_irregular_ten_words++;
+
+					if (array_irregular_ten_words[i] != ',' && array_irregular_ten_words[i] != '\0'){
+						temp_count_letters_irregular_ten_words++;
+					} else {
+						count_words_irregular_ten_words++;
+						count_letters_irregular_ten_words = temp_count_letters_irregular_ten_words;
+						temp_count_letters_irregular_ten_words = 0;
+					}
+
+					if (count_words_irregular_ten_words == ten_num){
+						break;
+					}
+
+					//Проверка конца строки и остановка цикла при её достижении
+					if (array_irregular_ten_words[i] == '\0'){
+						break;
+					}
+				}
+			}
+		} else if (ten_num == 0){ //Если десятка нет
+			if (n_num != 0){ //Если цифа есть
+				for (int i = 0; i < 120; i++){	
+					//С каждым символом счётчик увеличивается т.к. мы ищем границы слова
+					count_symbols_num_words++;
+
+					//Увеличение счётчиа кол-ва букв и его обнуление при достижении запятой или конца строки (для того чтобы начать записывать кол-во букв след. слова) а так же счётчик слов
+					if (array_num_words[i] != ',' && array_num_words[i] != '\0'){
+						temp_count_letters_num_words++;
+					} else {
+						count_words_num_words++; //При достижении запятой счётчик слов ++
+						count_letters_num_words = temp_count_letters_num_words; //Счётчик букв в слове принимает значение временного счётчика букв слове чтобы освободить временную переменную
+						temp_count_letters_num_words = 0; //Обнуление временного счётчика букв в слове
+					}
+
+					//Если счётчик слов равен числу "х", тогда ломаем цикл так как мы уже полностью прошли нужное число, и отнимаем от счётчика 1 так как он далее будет служить айди слова
+					if (count_words_num_words == n_num){
+						break;
+					}
+
+					//Проверка конца строки и остановка цикла при её достижении
+					if (array_num_words[i] == '\0'){
+						break;
+					}
+				}
+			}	
+		}
+		//Поиск границ сотни
 		for (int i = 0; i < 120; i++){		
 			//С каждым символом счётчик увеличивается т.к. мы ищем границы слова
 			count_symbols_num_words++;
@@ -222,17 +344,160 @@ int main (){
 			}
 		
 			//Если счётчик слов равен числу "х", тогда ломаем цикл так как мы уже полностью прошли нужное число, и отнимаем от счётчика 1 так как он далее будет служить айди слова
-			if (count_words_num_words == x){
+			if (count_words_num_words == hun_num){
+				//count_words_num_words--; //отнимаем 1 так как счётчик будет служить айди слова ((((НЕ АКТУАЛЬНО так как я сделал решение через границы слова))))
 				break;
 			}
 
 			//Проверка конца строки и остановка цикла при её достижении
 			if (array_num_words[i] == '\0'){
 				break;
+			}	
+		}
+	} else if (x_is == 3) { //Если число тысяча (сотня может быть а может и нет, + проверка для десятков + проверка для единицы если нет десятков)
+		if (hun_num != 0){ //Если сотня есть ищем единицу сотни
+			for (int i = 0; i < 120; i++){		
+				//С каждым символом счётчик увеличивается т.к. мы ищем границы слова
+				count_symbols_num_words++;
+
+				//Увеличение счётчиа кол-ва букв и его обнуление при достижении запятой или конца строки (для того чтобы начать записывать кол-во букв след. слова) а так же счётчик слов
+				if (array_num_words[i] != ',' && array_num_words[i] != '\0'){
+					temp_count_letters_num_words++;
+				} else {
+					count_words_num_words++; //При достижении запятой счётчик слов ++
+					count_letters_num_words = temp_count_letters_num_words; //Счётчик букв в слове принимает значение временного счётчика букв слове чтобы освободить временную переменную
+					temp_count_letters_num_words = 0; //Обнуление временного счётчика букв в слове
+				}
+		
+				//Если счётчик слов равен числу "х", тогда ломаем цикл так как мы уже полностью прошли нужное число, и отнимаем от счётчика 1 так как он далее будет служить айди слова
+				if (count_words_num_words == hun_num){
+					break;
+				}
+
+				//Проверка конца строки и остановка цикла при её достижении
+				if (array_num_words[i] == '\0'){
+					break;
+				}	
+			}
+		} 
+		if (ten_num != 0) { //Если десяток есть
+			if (ten_type == 0){ //Если десяток чистый без цифры
+				for (int i = 0; i < 100; i++){
+					count_symbols_clean_ten_words++;
+
+					if (array_clean_ten_words[i] != ',' && array_clean_ten_words[i] != '\0'){
+						temp_count_letters_clean_ten_words++;
+					} else {
+						count_words_clean_ten_words++;
+						count_letters_clean_ten_words = temp_count_letters_clean_ten_words;
+						temp_count_letters_clean_ten_words = 0;
+					}
+
+					if (count_words_clean_ten_words == ten_num){
+						break;
+					}
+
+					if (array_clean_ten_words[i] == '\0'){
+						break;
+					}
+				}
+			} else if (ten_type == 1){ //Если десяток чистый с цифрой
+				for (int i = 0; i < 100; i++){
+					count_symbols_clean_ten_words++;
+
+					if (array_clean_ten_words[i] != ',' && array_clean_ten_words[i] != '\0'){
+						temp_count_letters_clean_ten_words++;
+					} else {
+						count_words_clean_ten_words++;
+						count_letters_clean_ten_words = temp_count_letters_clean_ten_words;
+						temp_count_letters_clean_ten_words = 0;
+					}
+
+					if (count_words_clean_ten_words == ten_num){
+						break;
+					}
+
+					if (array_clean_ten_words[i] == '\0'){
+						break;
+					}
+				}
+
+				//Поиск границ цифр
+				for (int i = 0; i < 120; i++){		
+					//С каждым символом счётчик увеличивается т.к. мы ищем границы слова
+					count_symbols_num_words++;
+
+					//Увеличение счётчиа кол-ва букв и его обнуление при достижении запятой или конца строки (для того чтобы начать записывать кол-во букв след. слова) а так же счётчик слов
+					if (array_num_words[i] != ',' && array_num_words[i] != '\0'){
+						temp_count_letters_num_words++;
+					} else {
+						count_words_num_words++; //При достижении запятой счётчик слов ++
+						count_letters_num_words = temp_count_letters_num_words; //Счётчик букв в слове принимает значение временного счётчика букв слове чтобы освободить временную переменную
+						temp_count_letters_num_words = 0; //Обнуление временного счётчика букв в слове
+					}
+
+					//Если счётчик слов равен числу "х", тогда ломаем цикл так как мы уже полностью прошли нужное число, и отнимаем от счётчика 1 так как он далее будет служить айди слова
+					if (count_words_num_words == n_num){
+						break;
+					}
+
+					//Проверка конца строки и остановка цикла при её достижении
+					if (array_num_words[i] == '\0'){
+						break;
+					}	
+				}	
+			} else { //Если десяток неправильный
+				for (int i = 0; i < 200; i++){
+					count_symbols_irregular_ten_words++;
+
+					if (array_irregular_ten_words[i] != ',' && array_irregular_ten_words[i] != '\0'){
+						temp_count_letters_irregular_ten_words++;
+					} else {
+						count_words_irregular_ten_words++;
+						count_letters_irregular_ten_words = temp_count_letters_irregular_ten_words;
+						temp_count_letters_irregular_ten_words = 0;
+					}
+
+					if (count_words_irregular_ten_words == ten_num){
+						break;
+					}
+
+					//Проверка конца строки и остановка цикла при её достижении
+					if (array_irregular_ten_words[i] == '\0'){
+						break;
+					}
+				}
+			}
+		} else if (ten_num == 0) { //Если десятка нету
+			if (n_num != 0) { //Если цифра есть
+				for (int i = 0; i < 120; i++){	
+					//С каждым символом счётчик увеличивается т.к. мы ищем границы слова
+					count_symbols_num_words++;
+
+					//Увеличение счётчиа кол-ва букв и его обнуление при достижении запятой или конца строки (для того чтобы начать записывать кол-во букв след. слова) а так же счётчик слов
+					if (array_num_words[i] != ',' && array_num_words[i] != '\0'){
+						temp_count_letters_num_words++;
+					} else {
+						count_words_num_words++; //При достижении запятой счётчик слов ++
+						count_letters_num_words = temp_count_letters_num_words; //Счётчик букв в слове принимает значение временного счётчика букв слове чтобы освободить временную переменную
+						temp_count_letters_num_words = 0; //Обнуление временного счётчика букв в слове
+					}
+
+					//Если счётчик слов равен числу "х", тогда ломаем цикл так как мы уже полностью прошли нужное число, и отнимаем от счётчика 1 так как он далее будет служить айди слова
+					if (count_words_num_words == n_num){
+						break;
+					}
+
+					//Проверка конца строки и остановка цикла при её достижении
+					if (array_num_words[i] == '\0'){
+						break;
+					}
+				}
 			}
 		}
 	}
 
+	/**************************************************** КОНЕЦ БЛОКА *********************************************************/
 
 	//Первый цикл для единиц
 	// for (int i = 0; i < 120; i++){		
@@ -260,7 +525,7 @@ int main (){
 	// 	}	
 	// }
 
-	//Второй цикл для десятков от 11 до 19 включительно
+	//Второй цикл для неправильных десятков от 11 до 19 включительно
 	// for (int i = 0; i < 200; i++){
 	// 	count_symbols_irregular_ten_words++;
 
@@ -311,6 +576,9 @@ int main (){
 	// 		break;
 	// 	}
 	// }
+
+	/**********************************ОПЕРАЦИИ С ЗАНЕСЕНИЕМ РЕЗУЛЬТАТА**************************************************/
+
 	//Переменная которая считает кол-во пробелов               Нужно научить её это делать
 	int space_count = 2;
 	//Переменная для длинны результативного массива, с учётом кол-ва пробелов
