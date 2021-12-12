@@ -28,6 +28,7 @@ int main (){
 	int ten_num = 0;
 	int n_num = 0;
 
+	//Кол-во пробелов
 	int space_count = 0;
 
 	//Определение разрядности числа
@@ -139,7 +140,7 @@ int main (){
 
 
 	//Начало волшебства
-	
+
     //Ищем границы слов в строках в зависимости от числа
 	if (x_is == 1){ //Если число десяток
 		if (ten_type == 2){ //Если десяток неправильный
@@ -552,91 +553,8 @@ int main (){
 				}
 	}
 
-	/**************************************************** КОНЕЦ БЛОКА *********************************************************/
-
-	//Первый цикл для единиц
-	// for (int i = 0; i < 120; i++){		
-	// 	//С каждым символом счётчик увеличивается т.к. мы ищем границы слова
-	// 	count_symbols_num_words++;
-
-	// 	//Увеличение счётчиа кол-ва букв и его обнуление при достижении запятой или конца строки (для того чтобы начать записывать кол-во букв след. слова) а так же счётчик слов
-	// 	if (array_num_words[i] != ',' && array_num_words[i] != '\0'){
-	// 		temp_count_letters_num_words++;
-	// 	} else {
-	// 		count_words_num_words++; //При достижении запятой счётчик слов ++
-	// 		count_letters_num_words = temp_count_letters_num_words; //Счётчик букв в слове принимает значение временного счётчика букв слове чтобы освободить временную переменную
-	// 		temp_count_letters_num_words = 0; //Обнуление временного счётчика букв в слове
-	// 	}
-		
-	// 	//Если счётчик слов равен числу "х", тогда ломаем цикл так как мы уже полностью прошли нужное число, и отнимаем от счётчика 1 так как он далее будет служить айди слова
-	// 	if (count_words_num_words == x){
-	// 		//count_words_num_words--; //отнимаем 1 так как счётчик будет служить айди слова ((((НЕ АКТУАЛЬНО так как я сделал решение через границы слова))))
-	// 		break;
-	// 	}
-
-	// 	//Проверка конца строки и остановка цикла при её достижении
-	// 	if (array_num_words[i] == '\0'){
-	// 		break;
-	// 	}	
-	// }
-
-	//Второй цикл для неправильных десятков от 11 до 19 включительно
-	// for (int i = 0; i < 200; i++){
-	// 	count_symbols_irregular_ten_words++;
-
-	// 	if (array_irregular_ten_words[i] != ',' && array_irregular_ten_words[i] != '\0'){
-	// 		temp_count_letters_irregular_ten_words++;
-	// 	} else {
-	// 		count_words_irregular_ten_words++;
-	// 		count_letters_irregular_ten_words = temp_count_letters_irregular_ten_words;
-	// 		temp_count_letters_irregular_ten_words = 0;
-	// 	}
-
-	// 	if (count_words_irregular_ten_words == t_n){
-	// 		break;
-	// 	}
-	// 	//Перебор числа и его вывод в консоль, вместо запятых ставим пробелы
-	// 	// if (array_irregular_ten_words[i] != ','){
-	// 	// 	printf ("%c", array_irregular_ten_words[i]);
-	// 	// } else if (array_irregular_ten_words[i] == ','){
-	// 	// 	printf ("%s", " ");
-	// 	// } else {
-	// 	// 	printf ("\n\n");
-	// 	// }	
-
-	// 	//Проверка конца строки и остановка цикла при её достижении
-	// 	if (array_irregular_ten_words[i] == '\0'){
-	// 		break;
-	// 	}
-	// }
-
-	//Третий цикл для чистых десятков
-	// for (int i = 0; i < 100; i++){
-	// 	count_symbols_clean_ten_words++;
-
-	// 	if (array_clean_ten_words[i] != ',' && array_clean_ten_words[i] != '\0'){
-	// 		temp_count_letters_clean_ten_words++;
-	// 	} else {
-	// 		count_words_clean_ten_words++;
-	// 		count_letters_clean_ten_words = temp_count_letters_clean_ten_words;
-	// 		temp_count_letters_clean_ten_words = 0;
-	// 	}
-
-	// 	if (count_words_clean_ten_words == test){
-	// 		//printf ("\nСлово найдено");
-	// 		break;
-	// 	}
-
-	// 	if (array_clean_ten_words[i] == '\0'){
-	// 		break;
-	// 	}
-	// }
-
-	/**********************************ОПЕРАЦИИ С ЗАНЕСЕНИЕМ РЕЗУЛЬТАТА**************************************************/
-
-	//Переменная которая считает кол-во пробелов               Нужно научить её это делать
-	// int space_count = 0;
-
+	
+	//Перменная для учёта длинны слов thousand и hundred в результативного массива
 	int temp_hun_or_thous = 0;
 	if (x_is == 2){
 		temp_hun_or_thous += 8;
@@ -645,10 +563,10 @@ int main (){
 	}
 
 
-	//Переменная для длинны результативного массива, с учётом кол-ва пробелов
+	//Переменная для длинны результативного массива
 	int len_m2 = space_count + count_letters_num_words + count_letters_irregular_ten_words + count_letters_clean_ten_words + temp_hun_or_thous;
 
-	//Массив с результатом превращения цифры в слово длинной равной кол-ву символов в нужном слове
+	//Результативный массив
 	char m2[len_m2+1];
 
 	//Переменная для индекса результативного массива 
@@ -677,7 +595,6 @@ int main (){
 
 	char space = ' ';
 	char spec_symbol_end = '\0';
-
 
 	if (x_is == 0){ //Если число цифра
 		for (int i = temp_left_num_words; i < temp_right_num_words; i++){
@@ -868,49 +785,8 @@ int main (){
 	}
 	
 		
-		//if (){
-
-		
-	
-
-
-	//Запись цифры в словесном виде в финальный массив
-	// for (int i = temp_left_num_words; i < temp_right_num_words; i++){
-	// 	m2[temp] = array_num_words[i];
-	// 	temp++;
-	// }
-	// //Добавляем пробел после первого слова
-	
-	// m2[temp] = space;
-	// temp += 1; //Увеличиваем временную переменную чтобы учесть пробел
-	
-	//Запись десятка в тот же массив как продолжение
-	// for (int i = temp_left_irregular_ten_words; i < temp_right_irregular_ten_words; i++){
-	// 	m2[temp] = array_irregular_ten_words [i];
-	// 	if (temp + 1 == len_m2){
-	// 		m2[temp + 1] = spec_symbol_end;
-	// 	}
-	// 	temp++;
-	// }
-
-	// m2[temp] = space;
-	// temp += 1;
-
-	// //Запись чистого десятка как продолжение
-	// for (int i = temp_left_clean_ten_words; i < temp_right_clean_ten_words; i++){
-	// 	m2[temp] = array_clean_ten_words[i];
-	// 	temp++;
-	// }
-
-	// printf ("\nВведена цифра: ");
-	// printf ("%d\n", x);
 	printf ("\nСлово: ");
 	printf ("%s\n", m2);
-
-	//printf ("%d", count_words);
-	//printf ("\n");
 	
     return (0);
-
-
 }
