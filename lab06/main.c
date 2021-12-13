@@ -543,11 +543,6 @@ int main (){
 				m2[temp] = word_for_zero[i];
 				temp++;
 			}
-		// }
-		// for (int i = temp_left_num_words; i < temp_right_num_words; i++){
-		// 	m2[temp] = array_num_words[i];
-		// 	temp++;
-		// }
 		}
 	} else if (x_is == 1){ //Если число десяток
 		if (ten_type == 0){ //Если десяток чистый
