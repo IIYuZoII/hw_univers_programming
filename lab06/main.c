@@ -18,7 +18,7 @@
 
 int main (){
 	
-	int x = 3333;
+	int x = 97;
 
 	//Единица = 0
 	//Десяток = 1
@@ -487,13 +487,17 @@ int main (){
 	//Переменная для учёта длинны слов thousand и hundred в результативного массива
 	int temp_hun_or_thous = 0;
 	if (x_is == 2){
-		temp_hun_or_thous += 8;
+		temp_hun_or_thous += 7;
 	} else if (x_is == 3){
-		temp_hun_or_thous += 9 + 8;
+		if (hun_num != 0){
+			temp_hun_or_thous += 8 + 7;
+		} else {
+			temp_hun_or_thous += 8;
+		}
 	}
 	
 	//Переменная для длинны результативного массива
-	int len_m2 = space_count + count_letters_num_words + count_letters_irregular_ten_words + count_letters_clean_ten_words + temp_hun_or_thous;
+	int len_m2 = space_count + count_letters_num_words + count_letters_irregular_ten_words + count_letters_clean_ten_words + count_letters_num_hun_words + count_letters_num_thous_words + temp_hun_or_thous;
 	if (x_is == 0 && n_num == 0){
 		len_m2 = 4;
 	}
@@ -714,6 +718,10 @@ int main (){
 		 				m2[temp + 1] = spec_symbol_end;
 			 		}
 				}
+			} else if (n_num == 0) {
+				if (temp == len_m2){
+		 			m2[temp] = spec_symbol_end;
+			 	}
 			}
 		}
 	}
