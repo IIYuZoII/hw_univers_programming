@@ -1,1 +1,3 @@
-int get_count(int *b, int len);
+#include <stdlib.h>
+
+void get_count (int *p, unsigned b, int *r, unsigned *c);

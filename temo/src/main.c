@@ -1,27 +1,48 @@
 #include <stdlib.h>
+#include <stdio.h>
 #include <time.h>
+#include <malloc.h>
 
-#include "lib.h"
 
-int main(int argc, char **argv) {
+#include "/home/yuzo/programming/workTemp/hw_univers_programming/temo/src/lib.h"
+
+
+int main (){
+    int *p = NULL;
+    int *res = NULL;
+    unsigned var_for_cut;
     
-    int len = 6;
+    unsigned size = 1231;
+    unsigned i;
 
-    int a[] = {5, 5, 5, 5, 5, 5};
-    if (argc == 1) {
-        srand((unsigned)time(NULL));
-        for (int i = 0; i < len; i++) {
-            a[i] = rand() % 100;
-        }
-    } else {
-        for (int i = 1; i < len + 1; i++) {
-            a[i - 1] = (int)strtod(argv[i], 0);
+    p = (int *)malloc(size * sizeof(int));
+    res = (int *)malloc(128);
+    
+    
+    // srand((unsigned)time(NULL));
+    // for (i = 0; i < size; i++){
+    //     *(p + i) = rand()%100;
+    //     printf("%d\n", *(p + i));
+    // }
+    
+    for (i = 0; i < size; i++){
+        if (i % 2 == 0){
+            *(p + i) = 2;
+        } else {
+            *(p + i) = 3;
         }
     }
-    
-    int *b = &a[0];
-    int res = get_count(b, len);
-    
+    get_count(p, size, res, &var_for_cut);
+    res = (int *)realloc(res, var_for_cut); //Обрезка массива нужно доделать
 
-    return (0);
+    printf("Size: %u", _msize (res) );
+
+    for (int k = 0; k < 4; k++){
+        printf("%d\n", *(res + k));
+    }
+    
+    free (p);
+    free (res);
+    
+    return 0;
 }

@@ -1,1 +1,1 @@
-int sum(int a, int b);
+int get_count(int *ap, int len);
