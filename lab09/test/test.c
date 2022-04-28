@@ -1,4 +1,4 @@
-#include "/home/yuzo/programming/workTemp/hw_univers_programming/lab09/src/lib.h"
+#include "../src/lib.h"
 #include <check.h> 
 
 
@@ -17,7 +17,7 @@ int main(void)
 	Suite *s = suite_create("Programing"); 
 	TCase *tc_core = tcase_create("Lab-09"); 
 	
-	tcase_add_test(tc_core, test_get_count); /* test_sum - method we created */ 
+	tcase_add_test(tc_core, test_get_count); 
 	suite_add_tcase(s, tc_core); 
 	
 	SRunner *sr = srunner_create(s); 
