@@ -59,9 +59,11 @@ void myFunc(float **matrix, float **matrix_transparent, unsigned rows, unsigned 
     //Printing matrix
     printf("\n\nMatrix original:\n");
     for (i = 0; i < rows; i++){
+        printf ("[");
         for (j = 0; j < columns; j++){
-            printf("%0.2f ", *(*(matrix + i) + j));
+            printf("\t%0.2f\t", *(*(matrix + i) + j));
         }
+        printf ("]");
         printf ("\n");
     }
 
@@ -69,9 +71,11 @@ void myFunc(float **matrix, float **matrix_transparent, unsigned rows, unsigned 
     //Printing matrix_transparent
     printf("\n\nMatrix transparent:\n");
     for (i = 0; i < columns; i++){
+        printf ("[");
         for (j = 0; j < rows; j++){
-            printf("%0.2f ", *(*(matrix_transparent + i) + j));
+            printf("\t%0.2f\t", *(*(matrix_transparent + i) + j));
         }
+        printf ("]");
         printf ("\n");
     }
 }
