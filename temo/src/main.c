@@ -14,33 +14,13 @@ int main (){
     int random_temp = 0;
 
 
-    printf("Введите кол-во строк матрицы: ");
-    if (scanf("%d", &rows) == 0){
-        printf ("\nОшибка, Вы ввели неверные данные, пожалуйста перезапустите программу");
-        printf ("\n");
-        return (0);   
-    } else if ((int)rows <= 0) {
-        printf ("Не существует матрицы с таким количеством строк. Пожалуйста перезапустите программу и введите верные данные");
-        printf ("\n");
+    if (printer_scanner(&rows, &columns) == 1) {
         return (0);
     }
 
-
-    printf("Введите кол-во столбцов матрицы: ");
-    if (scanf("%d", &columns) == 0){
-        printf ("\nError, you wrote wrong data, please restart the program");
-        printf ("\n");
-        return (0);
-    } else if ((int)columns <= 0) {
-        printf ("Не существует матрицы с таким количеством столбцов. Пожалуйста перезапустите программу и введите верные данные");
-        printf ("\n");
-        return (0);
-    }
     
-
-    //Initialize matrixs
     srand((unsigned)time(NULL));
-
+    //Initialize matrixs
     matrix = (float **)malloc(rows * sizeof(float *));
     for (i = 0; i < rows; i++){
         *(matrix + i) = (float *)malloc(columns * sizeof(float));

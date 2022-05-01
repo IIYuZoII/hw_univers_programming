@@ -7,6 +7,36 @@
 
 #include "lib.h"
 
+
+int printer_scanner (unsigned *rows, unsigned *columns){
+    printf("Введите кол-во строк матрицы (не более 20): ");
+    if (scanf("%d", &*rows) == 0){
+        printf ("\nОшибка, вы ввели неверные данные, пожалуйста перезапустите программу\n");
+        return (1);   
+    } else if (*rows < MIN_RANGE_FOR_MATRIX) {
+        printf ("\nНе существует матрицы с таким количеством строк. Пожалуйста перезапустите программу и введите верные данные\n");
+        return (1);
+    }
+    
+
+    printf("Введите кол-во столбцов матрицы (не более 20): ");
+    if (scanf("%d", &*columns) == 0){
+        printf ("\nОшибка, вы ввели неверные данные, пожалуйста перезапустите программу\n");
+        return (1);
+    } else if (*columns < MIN_RANGE_FOR_MATRIX) {
+        printf ("\nНе существует матрицы с таким количеством столбцов. Пожалуйста перезапустите программу и введите верные данные\n");
+        return (1);
+    }
+    
+    if (*rows > MAX_RANGE_FOR_MATRIX || *columns > MAX_RANGE_FOR_MATRIX){
+        printf ("\nВведённые данные выходят за рамки допустимых значений\nПожалуйста перезапустите программу и введите верные данные\n");
+        return (1);
+    }
+
+    return (0);
+}
+
+
 float randomizer (float max, float min, int random_temp){
     float res;
     if (random_temp == 0) {
