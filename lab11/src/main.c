@@ -1,8 +1,4 @@
 #include "lib.h"
-#include <unistd.h>
-#include <fcntl.h>
-#include <string.h>
-
 
 int main (){
     unsigned rows = 0;
@@ -16,7 +12,11 @@ int main (){
     int random_temp = 0;
 
     
-    if (printer_scanner(&rows, &columns) == 1) {
+    if (read_info_from_file() == 1){
+        return(0);
+    }
+
+    if (printer_scanner(&rows, &columns) == 1){
         return (0);
     }
 
@@ -27,7 +27,7 @@ int main (){
     for (i = 0; i < rows; i++){
         *(matrix + i) = (float *)malloc(columns * sizeof(float));
         for (j = 0; j < columns; j++){
-            random_temp = rand()%2;
+            random_temp = rand()%2; //0 - число будет положительное, 1 - отрицательное
             *(*(matrix + i) + j) = randomizer(max, min, random_temp);
         }
     }

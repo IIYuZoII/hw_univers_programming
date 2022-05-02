@@ -7,12 +7,14 @@
 
 #include "lib.h"
 
-
-int printer_scanner (unsigned *rows, unsigned *columns){
-
+int read_info_from_file (){
+    // Read info about this program and author from input.txt
     int fd = open ("../assets/input.txt", O_RDWR | O_CREAT);
     if (fd < 0) {
-        printf ("Error, couldn't open file \n");
+        // printf ("Ошибка, не удалось открыть файл \n");
+        char err_msg [] = "Ошибка, не удалось открыть файл\n";
+        write (2, err_msg, strlen(err_msg));
+        return (1);
     }
     
     char *c = (char *)malloc(100 * sizeof(char));
@@ -25,6 +27,12 @@ int printer_scanner (unsigned *rows, unsigned *columns){
     close(fd);
     free(c);
 
+    return (0);
+}
+
+int printer_scanner (unsigned *rows, unsigned *columns){
+
+    //Input && Output
     printf("Введите кол-во строк матрицы (не более %d%s", MAX_RANGE_FOR_MATRIX ,"): ");
     if (scanf("%d", &*rows) == 0){
         printf ("\nОшибка, вы использовали недопустимый тип данных, пожалуйста перезапустите программу и введите целочисельный тип данных\n");
@@ -70,7 +78,6 @@ void get_matrix_transponent(float **matrix, float **matrix_transparent, unsigned
             *(*(matrix_transparent + j) + i) = *(*(matrix + i) + j);
         }
     }
-
 
     //Printing matrix
     printf("\n\nВведённая матрица:\n");
