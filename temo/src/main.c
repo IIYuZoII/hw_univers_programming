@@ -1,5 +1,7 @@
 #include "lib.h"
-#include <stdlib.h>
+#include <unistd.h>
+#include <fcntl.h>
+#include <string.h>
 
 
 int main (){
@@ -13,7 +15,7 @@ int main (){
     float max = 1000, min = -1000;
     int random_temp = 0;
 
-
+    
     if (printer_scanner(&rows, &columns) == 1) {
         return (0);
     }
@@ -36,7 +38,7 @@ int main (){
     }
 
 
-    myFunc(matrix, matrix_transparent, rows, columns);
+    get_matrix_transponent(matrix, matrix_transparent, rows, columns);
 
 
     //Free memory
