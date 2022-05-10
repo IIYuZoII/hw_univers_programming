@@ -1,0 +1,6 @@
+make --dry-run --always-make --keep-going --print-directory
+make: Entering directory '/home/yuzo/programming/workTemp/hw_univers_programming'
+make: Leaving directory '/home/yuzo/programming/workTemp/hw_univers_programming'
+ 
+make: *** No targets specified and no makefile found.  Stop.
+
