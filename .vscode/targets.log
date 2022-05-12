@@ -1,4 +1,6 @@
 make all --print-data-base --no-builtin-variables --no-builtin-rules --question
+make: *** No rule to make target 'all'.  Stop.
+
 # GNU Make 4.3
 # Built for x86_64-pc-linux-gnu
 # Copyright (C) 1988-2020 Free Software Foundation, Inc.
@@ -6,7 +8,7 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Thu May 12 17:07:21 2022
+# Make data base, printed on Thu May 12 20:57:52 2022
 
 # Variables
 
@@ -23,7 +25,7 @@ SNAP_INSTANCE_KEY =
 # environment
 GJS_DEBUG_OUTPUT = stderr
 # environment
-VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-d9e58d59-9ce4-4ce4-8756-2b46889cb1e6.sock
+VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-083c03b4-7fd1-4bd6-92d9-6df0662f9d78.sock
 # environment
 LC_NAME = uk_UA.UTF-8
 # environment
@@ -63,7 +65,7 @@ VSCODE_CODE_CACHE_PATH = /home/yuzo/.config/Code/CachedData/da15b6fd3ef856477bf6
 # environment
 LANG = C
 # environment
-XAUTHORITY = /run/user/1000/.mutter-Xwaylandauth.EWYXL1
+XAUTHORITY = /run/user/1000/.mutter-Xwaylandauth.RAA2L1
 # default
 .LOADED := 
 # default
@@ -103,7 +105,7 @@ SNAP_REEXEC =
 # environment
 VSCODE_VERBOSE_LOGGING = true
 # environment
-VSCODE_PID = 2833
+VSCODE_PID = 2799
 # environment
 XDG_SESSION_TYPE = wayland
 # automatic
@@ -111,7 +113,7 @@ XDG_SESSION_TYPE = wayland
 # environment
 BAMF_DESKTOP_FILE_HINT = /var/lib/snapd/desktop/applications/code_code.desktop
 # environment
-SESSION_MANAGER = local/yuzo-VirtualBox:@/tmp/.ICE-unix/1683,unix/yuzo-VirtualBox:/tmp/.ICE-unix/1683
+SESSION_MANAGER = local/yuzo-VirtualBox:@/tmp/.ICE-unix/1659,unix/yuzo-VirtualBox:/tmp/.ICE-unix/1659
 # automatic
 *F = $(notdir $*)
 # environment
@@ -159,7 +161,7 @@ LC_TIME = uk_UA.UTF-8
 # environment
 SNAP = /snap/code/96
 # environment
-INVOCATION_ID = bc5bd8d22ca342038b79c79e0a958c2d
+INVOCATION_ID = e2e63bf6d8ec4502a7172421d5d39d72
 # environment
 SNAP_REVISION = 96
 # environment
@@ -197,7 +199,7 @@ SNAP_ARCH = amd64
 # makefile
 .DEFAULT_GOAL := 
 # environment
-SYSTEMD_EXEC_PID = 1709
+SYSTEMD_EXEC_PID = 1696
 # environment
 DISPLAY = :0
 # environment
@@ -213,11 +215,11 @@ SNAP_DATA = /var/snap/code/96
 # environment
 SNAP_CONTEXT = 0CpzBt6F7BZV4YAHytVHB1sLN2xtADuuZzpIlNsEJLMIQFiAenyk
 # environment
-MANAGERPID = 1551
+MANAGERPID = 1525
 # environment
 LC_MEASUREMENT = uk_UA.UTF-8
 # environment
-GIO_LAUNCHED_DESKTOP_FILE_PID = 2788
+GIO_LAUNCHED_DESKTOP_FILE_PID = 2755
 # environment
 _ = /snap/code/96/usr/share/code/code
 # environment
@@ -227,7 +229,7 @@ XDG_RUNTIME_DIR = /run/user/1000
 # environment
 GDK_PIXBUF_MODULE_FILE = /home/yuzo/snap/code/common/.cache/gdk-pixbuf-loaders.cache
 # environment
-JOURNAL_STREAM = 8:25078
+JOURNAL_STREAM = 8:27837
 # environment
 XDG_SESSION_CLASS = user
 # environment
@@ -278,15 +280,13 @@ SNAP_LIBRARY_PATH = /var/lib/snapd/lib/gl:/var/lib/snapd/lib/gl32:/var/lib/snapd
 # Pattern-specific Variable Values
 
 # No pattern-specific variable values.
- 
-make: *** No rule to make target 'all'.  Stop.
-
 
 # Directories
 
 # . (device 2051, inode 788781): 17 files, no impossibilities.
 
 # 17 files, no impossibilities in 1 directories.
+ 
 
 # Implicit Rules
 
@@ -342,6 +342,6 @@ GNUmakefile:
 # strcache performance: lookups = 28 / hit rate = 10%
 # hash-table stats:
 # Load=25/8192=0%, Rehash=0, Collisions=0/28=0%
-# Finished Make data base on Thu May 12 17:07:21 2022
+# Finished Make data base on Thu May 12 20:57:52 2022
 
  
