@@ -9,8 +9,8 @@
 #define BUFFER_SIZE 1000
 
 void find_count_words_in_line (char *str, int *k);
-void find_duplicates(char *str);
-void removeAll(char * str, char * toRemove);
+void find_duplicates(char *str, unsigned long *index);
+void removeAll(char *str, char *buffer, char *toRemove, unsigned long *index);
 
 
 int main()
@@ -19,7 +19,7 @@ int main()
     FILE * fTemp;
 
     
-
+    unsigned long index = 0; //Для индексирования основного буфера
     
     char *path = (char *)malloc(100 * sizeof(char));  
     
@@ -31,16 +31,9 @@ int main()
     printf("Enter path of source file: ");
     scanf("%s", path);
 
-    // printf("Enter word to remove: ");
-    // scanf("%s", toRemove);
-
 
     /*  Open files */
     fPtr  = fopen(path, "r");
-    // fseek(fPtr, 0, SEEK_END);
-    // int file_size = (int)ftell(fPtr);
-    // fseek(fPtr, 0, SEEK_SET);
-    // printf("%d", file_size);
     fTemp = fopen("delete.tmp", "w"); 
 
     /* fopen() return NULL if unable to open file in given mode. */
@@ -78,7 +71,7 @@ int main()
         //не удалять первое слово
         //(начинать не с того же символа ибо тогда выходит простая прокрутка) (возможно не нужно будет если сделать предидущее условие)
         while (k >= 0){
-            find_duplicates(buffer);
+            find_duplicates(buffer, &index);
             k--;
         }
 
@@ -139,7 +132,17 @@ void find_count_words_in_line (char *str, int *k){
 если строка НАЧИНАЕТСЯ не с букв то ничего изменено не будет
 
 */
-void find_duplicates(char *str){
+
+//Получает - старший буфер, индекс
+//Отправляет - младший буфер, старший буфер, слово для удаления в младшем буфере, индекс
+
+
+//Функция берёт первое слово с начала индексирования,
+//находит его границу и всё что после слова записывает в младший буфер
+//чтобы передать в функцию которая вырежет все повторы найденного слова (его тоже передаём)
+void find_duplicates(char *str, unsigned long *index){
+    //str - bigger buffer (main)
+    
     unsigned long i;
     unsigned long stringLen;
 
@@ -155,7 +158,7 @@ void find_duplicates(char *str){
 
     // unsigned int temp = stringLen;
     int switch_temp = 0;
-    for (i = 0; i < stringLen; i++){
+    for (i = 0; i < stringLen; i++){ //Возможно i стоит приравнивать к index
         // if (switch_temp == 0 && (str[i] == ' ' || str[i] == ',') && (str[i - 1] == ' ' || str[i - 1] == ',')){ //Problem is here
         //     // if()
         //     // temp++;                   //спасает от бесконечного цикла при первом спец символе
@@ -165,16 +168,21 @@ void find_duplicates(char *str){
         if (str[i] != ',' && str[i] != ' ' && str[i] != '\t' && str[i] != '\n' && str[i] != '\0'){
             // *(toRemove + i) = str[i];
             toRemove[i] = str[i];
+            // *index++; //Увеличиваем индекс чтобы сместить "указатель на символ в буфефере" вправо когда находим слово
         } else if (i == 0) {
+            // *index++;
             continue;
         // *(toRemove + i) = '\0';
         } else {
+            // *index++;
             toRemove[i] = '\0';
             break;
         }
-    }
-
+    } //Или после цикла написать присваивание индексу значения
+    *index = i;
     int j = 0;
+
+    //Запись в младший буфер значений строки ПОСЛЕ найденного слова (с пробелом после слова)
     while (i < stringLen){
         buffer_small[j] = str[i];
         i++;
@@ -186,7 +194,7 @@ void find_duplicates(char *str){
     // }
     // toRemove = (char *)realloc(toRemove, i * sizeof(char));
     // printf ("%s", toRemove); //return 3
-    removeAll (buffer_small, toRemove);
+    removeAll (buffer_small, str, toRemove, index); //Очистка найденного остатка строки от дубликатов и перезапись старшего буфера с учётом младшего
     // free (toRemove);
 }
 
@@ -194,9 +202,13 @@ void find_duplicates(char *str){
 /**
  * Remove all occurrences of a given word in string.
  */
-void removeAll(char * str, char * toRemove)
+void removeAll(char * str, char *buffer, char * toRemove, unsigned long *index)
 {
+    //srt - smaller buffer (work's temp)
+    //buffer - bigger buffer (main)
+
     unsigned long i, j;
+    unsigned long p = *index;
     unsigned long stringLen, toRemoveLen = 0;
     int found;
 
@@ -251,7 +263,8 @@ void removeAll(char * str, char * toRemove)
             } else {
                 for(j=i; j <= stringLen - toRemoveLen; j++)
                 {
-                    str[j] = str[j + toRemoveLen];
+                    // str[j] = str[j + toRemoveLen];
+                    // buffer[j] = 
                 }
             }
             
@@ -261,4 +274,10 @@ void removeAll(char * str, char * toRemove)
             i--;
         }
     }
+
+    //Запись маленького в большой с учётом того что было в большом
+    for (i = 0; i < stringLen; i++){
+        buffer[p] = str[i];
+    }
+
 }
