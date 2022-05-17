@@ -1,0 +1,291 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Взаємодія з користувачем шляхом механізму введення/виведення: Файл src/lib.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Взаємодія з користувачем шляхом механізму введення/виведення
+   &#160;<span id="projectnumber">11</span>
+   </div>
+   <div id="projectbrief">Визначити транспоновану матрицю. Використовувати механізм введення/виведення</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Створено системою Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'Пошук','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','Пошук');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#define-members">Макровизначення</a> &#124;
+<a href="#func-members">Функції</a>  </div>
+  <div class="headertitle">
+<div class="title">Файл lib.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+
+<p>Файл з описом функції для визначення транспонованої матриці  
+<a href="#details">Детальніше...</a></p>
+<div class="textblock"><code>#include &lt;fcntl.h&gt;</code><br />
+<code>#include &lt;stdio.h&gt;</code><br />
+<code>#include &lt;stdlib.h&gt;</code><br />
+<code>#include &lt;string.h&gt;</code><br />
+<code>#include &lt;time.h&gt;</code><br />
+<code>#include &lt;unistd.h&gt;</code><br />
+</div><div class="textblock"><div class="dynheader">
+Діаграма включених заголовочних файлів для lib.h:</div>
+<div class="dyncontent">
+<div class="center"><img src="lib_8h__incl.png" border="0" usemap="#asrc_2lib_8h" alt=""/></div>
+</div>
+</div><div class="textblock"><div class="dynheader">
+Граф файлів, які включають цей файл:</div>
+<div class="dyncontent">
+<div class="center"><img src="lib_8h__dep__incl.png" border="0" usemap="#asrc_2lib_8hdep" alt=""/></div>
+</div>
+</div>
+<p><a href="lib_8h_source.html">Див. вихідні тексти.</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
+Макровизначення</h2></td></tr>
+<tr class="memitem:aae2a7100eafb935a1d8d48c4bbcdc34a"><td class="memItemLeft" align="right" valign="top"><a id="aae2a7100eafb935a1d8d48c4bbcdc34a"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="lib_8h.html#aae2a7100eafb935a1d8d48c4bbcdc34a">MAX_RANGE_FOR_MATRIX</a>&#160;&#160;&#160;11</td></tr>
+<tr class="memdesc:aae2a7100eafb935a1d8d48c4bbcdc34a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Максимально допустиме значення строк та колонок матриці <br /></td></tr>
+<tr class="separator:aae2a7100eafb935a1d8d48c4bbcdc34a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2382834b6755f738a2c19860269223a1"><td class="memItemLeft" align="right" valign="top"><a id="a2382834b6755f738a2c19860269223a1"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="lib_8h.html#a2382834b6755f738a2c19860269223a1">MIN_RANGE_FOR_MATRIX</a>&#160;&#160;&#160;1</td></tr>
+<tr class="memdesc:a2382834b6755f738a2c19860269223a1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Мінімально допустиме значення строк та колонок матриці <br /></td></tr>
+<tr class="separator:a2382834b6755f738a2c19860269223a1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+Функції</h2></td></tr>
+<tr class="memitem:a452401f82fe9c8e08a03f75f8c0ee2e8"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="lib_8h.html#a452401f82fe9c8e08a03f75f8c0ee2e8">read_info_from_file</a> ()</td></tr>
+<tr class="memdesc:a452401f82fe9c8e08a03f75f8c0ee2e8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Функція зчитує дані з файлу  <a href="lib_8h.html#a452401f82fe9c8e08a03f75f8c0ee2e8">Детальніше...</a><br /></td></tr>
+<tr class="separator:a452401f82fe9c8e08a03f75f8c0ee2e8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acd9aa22263934ba32569eccf8a18c3e7"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="lib_8h.html#acd9aa22263934ba32569eccf8a18c3e7">printer_scanner</a> (unsigned *rows, unsigned *columns)</td></tr>
+<tr class="memdesc:acd9aa22263934ba32569eccf8a18c3e7"><td class="mdescLeft">&#160;</td><td class="mdescRight">функція для отримання від користувача розмірів матриці  <a href="lib_8h.html#acd9aa22263934ba32569eccf8a18c3e7">Детальніше...</a><br /></td></tr>
+<tr class="separator:acd9aa22263934ba32569eccf8a18c3e7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab160b5fd3ebf172c041282b19adc3432"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="lib_8h.html#ab160b5fd3ebf172c041282b19adc3432">randomizer</a> (float max, float min, int random_temp)</td></tr>
+<tr class="memdesc:ab160b5fd3ebf172c041282b19adc3432"><td class="mdescLeft">&#160;</td><td class="mdescRight">функція для рандомного визначення числа та його знаку (+ чи -)  <a href="lib_8h.html#ab160b5fd3ebf172c041282b19adc3432">Детальніше...</a><br /></td></tr>
+<tr class="separator:ab160b5fd3ebf172c041282b19adc3432"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6adb2bba8cf620f2bd746fe4880fb443"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="lib_8h.html#a6adb2bba8cf620f2bd746fe4880fb443">get_matrix_transponent</a> (float **matrix, float **matrix_transparent, unsigned rows, unsigned columns)</td></tr>
+<tr class="memdesc:a6adb2bba8cf620f2bd746fe4880fb443"><td class="mdescLeft">&#160;</td><td class="mdescRight">Визначення транспонованої матриці  <a href="lib_8h.html#a6adb2bba8cf620f2bd746fe4880fb443">Детальніше...</a><br /></td></tr>
+<tr class="separator:a6adb2bba8cf620f2bd746fe4880fb443"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Детальний опис</h2>
+<div class="textblock"><p>Файл з описом функції для визначення транспонованої матриці </p>
+<dl class="section author"><dt>Автор</dt><dd>Sylka Michael </dd></dl>
+<dl class="section date"><dt>Дата</dt><dd>17-may-2022 </dd></dl>
+<dl class="section version"><dt>Версія</dt><dd>1.0 </dd></dl>
+</div><h2 class="groupheader">Опис функцій</h2>
+<a id="a6adb2bba8cf620f2bd746fe4880fb443"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6adb2bba8cf620f2bd746fe4880fb443">&#9670;&nbsp;</a></span>get_matrix_transponent()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void get_matrix_transponent </td>
+          <td>(</td>
+          <td class="paramtype">float **&#160;</td>
+          <td class="paramname"><em>matrix</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float **&#160;</td>
+          <td class="paramname"><em>matrix_transparent</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">unsigned&#160;</td>
+          <td class="paramname"><em>rows</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">unsigned&#160;</td>
+          <td class="paramname"><em>columns</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Визначення транспонованої матриці </p>
+<dl class="params"><dt>Аргументи</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">matrix</td><td>згенерована матриця </td></tr>
+    <tr><td class="paramname">matrix_transparent</td><td>транспонована матриця </td></tr>
+    <tr><td class="paramname">rows</td><td>кількість строк матриці <a class="el" href="">matrix</a>} </td></tr>
+    <tr><td class="paramname">columns</td><td>кількість колонок матриці <a class="el" href="">matrix</a>} </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="acd9aa22263934ba32569eccf8a18c3e7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acd9aa22263934ba32569eccf8a18c3e7">&#9670;&nbsp;</a></span>printer_scanner()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int printer_scanner </td>
+          <td>(</td>
+          <td class="paramtype">unsigned *&#160;</td>
+          <td class="paramname"><em>rows</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">unsigned *&#160;</td>
+          <td class="paramname"><em>columns</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>функція для отримання від користувача розмірів матриці </p>
+<dl class="params"><dt>Аргументи</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">rows</td><td>кількість строк </td></tr>
+    <tr><td class="paramname">columns</td><td>кількість колонок </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Повертає</dt><dd>int 0 при успішному отриманні данних або 1 при не вірних данних </dd></dl>
+
+</div>
+</div>
+<a id="ab160b5fd3ebf172c041282b19adc3432"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab160b5fd3ebf172c041282b19adc3432">&#9670;&nbsp;</a></span>randomizer()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float randomizer </td>
+          <td>(</td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>max</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>min</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>random_temp</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>функція для рандомного визначення числа та його знаку (+ чи -) </p>
+<dl class="params"><dt>Аргументи</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">max</td><td>максимальна границя для рандому </td></tr>
+    <tr><td class="paramname">min</td><td>мінімальна границя для рандому </td></tr>
+    <tr><td class="paramname">random_temp</td><td>змінна для визначення знаку рандомно-згенерованого числа </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Повертає</dt><dd>повертає float число в діапазоні від <a class="el" href="">min</a> } до {<a class="el" href="">max</a>} </dd></dl>
+
+</div>
+</div>
+<a id="a452401f82fe9c8e08a03f75f8c0ee2e8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a452401f82fe9c8e08a03f75f8c0ee2e8">&#9670;&nbsp;</a></span>read_info_from_file()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int read_info_from_file </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Функція зчитує дані з файлу </p>
+<dl class="section return"><dt>Повертає</dt><dd>int 0 при успішному виконанні або 1 при помилці зчитування </dd></dl>
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Створено системою&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

@@ -1,0 +1,200 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Вступ до показчиків: Лабораторна робота №10. Вступ до показчиків</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Вступ до показчиків
+   &#160;<span id="projectnumber">10</span>
+   </div>
+   <div id="projectbrief">Визначити, чи є в масиві елементи, що повторюються, якщо такі є, то створити масив, в якому вказати, скільки разів які елементи повторюються. Використовувати показжики при роботi з масивами</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Створено системою Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'Пошук','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','Пошук');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+</div><!-- top -->
+<div class="PageDoc"><div class="header">
+  <div class="headertitle">
+<div class="title">Лабораторна робота №10. Вступ до показчиків </div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><h1><a class="anchor" id="autotoc_md1"></a>
+1 Вимоги</h1>
+<h2><a class="anchor" id="autotoc_md2"></a>
+1.1 Розробник</h2>
+<ul>
+<li>Силка Михайло Миколайович;</li>
+<li>студент групи КН-921Г;</li>
+<li>17-тра-2022.</li>
+</ul>
+<h2><a class="anchor" id="autotoc_md3"></a>
+1.2 Загальне завдання</h2>
+<p>Розробити програму з використанням масивів та показжиків</p>
+<h2><a class="anchor" id="autotoc_md4"></a>
+1.3 Індивідуальне завдання</h2>
+<p>Створити програму яка визначає кількість повторів елементів у масиві Використовувати показжики при роботi з масивами</p>
+<h1><a class="anchor" id="autotoc_md5"></a>
+2 Опис програми</h1>
+<h2><a class="anchor" id="autotoc_md6"></a>
+2.1 Функціональне призначення</h2>
+<p>Программа призначена для визначення кількості повторів кожного числа у масиві</p>
+<p>Результат зберігається у масиві <em>res</em></p>
+<p>Подивитися результат виконання можна тільки в дебагері</p>
+<h2><a class="anchor" id="autotoc_md7"></a>
+2.2 Опис логічної структури</h2>
+<p>Програма визначає кількість повторів кожного числа та результат у кінцевий масив у форматі: число - кількість повторів</p>
+<h3><a class="anchor" id="autotoc_md8"></a>
+2.2.1 Основна функція</h3>
+<div class="fragment"><div class="line">int main ()</div>
+</div><!-- fragment --><p><em>Призначення</em>: головна функція.</p>
+<p><em>Опис роботи</em>:</p><ul>
+<li>ініціалізація динамічних масивів <em>arr</em> та <em>res</em></li>
+<li>заповнення числами згенерованими завдяки псевдо-рандому масиву <em>arr</em></li>
+<li>визов функції <em>void <a class="el" href="lib_8h.html#a5ba5b9b8c8b75f6228905a9e2eef4ce3" title="Функція визначає наявність у масиві повторів, якщо вони є - виписує їх у результуючий масив у форматі...">get_count(int *a, unsigned b, int *r, unsigned *c)</a></em></li>
+</ul>
+<h3><a class="anchor" id="autotoc_md9"></a>
+2.2.2 Функція визначення кількості повторів числа</h3>
+<div class="fragment"><div class="line">void get_count(int *a, unsigned b, int *r, unsigned *c)</div>
+</div><!-- fragment --><p><em>Призначення</em>: визначення кількості повторів кожного елементу числового масиву та запис форматованого результату у кінцевий масив</p>
+<p><em>Опис роботи</em>: створює тимчасовий масив для унікальних елементів; використовуючи тимчасовий масив шукає кількість повторів кожного числа з тимчасового масиву у вхідному масиві</p>
+<h3><a class="anchor" id="autotoc_md10"></a>
+2.2.3 Структура проекту</h3>
+<div class="fragment"><div class="line">lab10</div>
+<div class="line">├── Doc</div>
+<div class="line">│   └── lab10.md</div>
+<div class="line">├── Doxyfile</div>
+<div class="line">├── Makefile</div>
+<div class="line">├── src</div>
+<div class="line">│   ├── lib.c</div>
+<div class="line">│   ├── lib.h</div>
+<div class="line">│   └── main.c</div>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md11"></a>
+2.3 Важливі фрагменти програми</h2>
+<h3><a class="anchor" id="autotoc_md12"></a>
+Робота з динамічною пам'яттю</h3>
+<div class="fragment"><div class="line">arr = (int *)malloc(size * sizeof(int));</div>
+<div class="line">res = (int *)malloc(128);</div>
+<div class="line"> </div>
+<div class="line">free(arr);</div>
+<div class="line">free(res);</div>
+</div><!-- fragment --><h1><a class="anchor" id="autotoc_md13"></a>
+Варіант використання</h1>
+<p>Для демонстрації результатів задачі використовується:</p>
+<ul>
+<li>покрокове виконання програми в утиліті lldb;</li>
+</ul>
+<p><b>Варіант використання</b>: послідовність дій для запуску програми у режимі відлагодження:</p>
+<ul>
+<li>запустити програму у відлагоднику lldb;</li>
+<li>поставити точку зупинки в функції main перед строкою зі звільненням пам'яті масиву (<code>free(res);</code>);</li>
+<li>запустити програму;</li>
+<li>подивитись результати виконання програми, оглядаючи значення масиву res</li>
+</ul>
+<div class="fragment"><div class="line">yuzo@yuzo-VirtualBox:~/programming/workTemp/hw_univers_programming/lab10/dist$ lldb main.bin </div>
+<div class="line">Traceback (most recent call last):</div>
+<div class="line">  File &quot;&lt;string&gt;&quot;, line 1, in &lt;module&gt;</div>
+<div class="line">ModuleNotFoundError: No module named &#39;lldb.embedded_interpreter&#39;</div>
+<div class="line">(lldb) target create &quot;main.bin&quot;</div>
+<div class="line">Current executable set to &#39;/home/yuzo/programming/workTemp/hw_univers_programming/lab10/dist/main.bin&#39; (x86_64).</div>
+<div class="line">(lldb) b 54</div>
+<div class="line">Breakpoint 1: where = main.bin`main + 193 at main.c:54:8, address = 0x0000000000001471</div>
+<div class="line">(lldb) r</div>
+<div class="line">Process 14328 launched: &#39;/home/yuzo/programming/workTemp/hw_univers_programming/lab10/dist/main.bin&#39; (x86_64)</div>
+<div class="line">Process 14328 stopped</div>
+<div class="line">* thread #1, name = &#39;main.bin&#39;, stop reason = breakpoint 1.1</div>
+<div class="line">    frame #0: 0x0000555555555471 main.bin`main at main.c:54:8</div>
+<div class="line">   51     res = (int *)realloc(res, var_for_cut * sizeof(int)); //Обрезка массива</div>
+<div class="line">   52  </div>
+<div class="line">   53     free(arr);</div>
+<div class="line">-&gt; 54     free(res);</div>
+<div class="line">   55  </div>
+<div class="line">   56     return 0;</div>
+<div class="line">   57   }</div>
+<div class="line">(lldb) fr v</div>
+<div class="line">(int *) arr = 0x00005555555592a0</div>
+<div class="line">(int *) res = 0x00005555555592d0</div>
+<div class="line">(unsigned int) var_for_cut = 16</div>
+<div class="line">(unsigned int) i = 9</div>
+<div class="line">(unsigned int) size = 9</div>
+<div class="line">(lldb) p res</div>
+<div class="line">(int *) $0 = 0x00005555555592d0</div>
+<div class="line">(lldb) p *res</div>
+<div class="line">(int) $1 = 19</div>
+<div class="line">(lldb) p *(res + 1)</div>
+<div class="line">(int) $2 = 1</div>
+<div class="line">(lldb) p *(res + 2)</div>
+<div class="line">(int) $3 = 35</div>
+<div class="line">(lldb) p *(res + 3)</div>
+<div class="line">(int) $4 = 1</div>
+<div class="line">(lldb) p *(res + 4)</div>
+<div class="line">(int) $5 = 59</div>
+<div class="line">(lldb) p *(res + 5)</div>
+<div class="line">(int) $6 = 2</div>
+<div class="line">(lldb) p *(res + 6)</div>
+<div class="line">(int) $7 = 28</div>
+<div class="line">(lldb) p *(res + 7)</div>
+<div class="line">(int) $8 = 1</div>
+<div class="line">(lldb) p *(res + 8)</div>
+<div class="line">(int) $9 = 34</div>
+<div class="line">(lldb) p *(res + 9)</div>
+<div class="line">(int) $10 = 1</div>
+</div><!-- fragment --><h1><a class="anchor" id="autotoc_md14"></a>
+Висновки</h1>
+<p>При виконанні даної лабораторної роботи я навчився працювати з показжиками та динамічними масивами </p>
+</div></div><!-- contents -->
+</div><!-- PageDoc -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Створено системою&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

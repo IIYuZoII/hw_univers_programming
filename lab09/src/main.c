@@ -6,8 +6,8 @@
 int main(int argc, char **argv) {
 
   int len = 6;
-
   int a[] = {5, 5, 5, 5, 5, 5};
+
   if (argc == 1) {
     srand((unsigned)time(NULL));
     for (int i = 0; i < len; i++) {

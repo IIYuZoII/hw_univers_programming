@@ -1,3 +1,12 @@
+/**
+ * @file lib.c
+ * @brief Файл з реалізацією функцій для пошуку кількості слів у строчці
+ *
+ * @author Sylka Michael
+ * @date 17-may-2022
+ * @version 1.0
+ */
+
 #include "lib.h"
 
 int find_count_words_in_line(char *str) {

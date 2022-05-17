@@ -1,8 +1,13 @@
-// ( ** ) Робота повинна бути присвячена взаємодії з користувачем шляхом
-// використання функцій write(), read()
-
-// Завдання:
-// 4. ( * ) Визначити транспоновану матрицю.
+/**
+ * @file lib.c
+ * @brief Файл з реалізацією функцій для зчитування даних з файлу; ввід / вивід
+ * данних у консоль; генерація рандомного числа; визначення транспонованої
+ * матриці
+ *
+ * @author Sylka Michael
+ * @date 17-may-2022
+ * @version 1.0
+ */
 
 #include "lib.h"
 
@@ -10,7 +15,6 @@ int read_info_from_file() {
   // Read info about this program and author from input.txt
   int fd = open("../assets/input.txt", O_RDWR | O_CREAT);
   if (fd < 0) {
-    // printf ("Ошибка, не удалось открыть файл \n");
     char err_msg[] = "Ошибка, не удалось открыть файл\n";
     write(2, err_msg, strlen(err_msg));
     return (1);

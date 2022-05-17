@@ -1,7 +1,23 @@
+/**
+ * @file test.c
+ * @brief Файл з тестом на реалізацію функції визначення транспонованої матриці
+ *
+ * @author Sylka Michael
+ * @date 17-may-2022
+ * @version 1.0
+ */
+
 #include "../src/lib.h"
 #include <check.h>
 #include <stdlib.h>
 
+/**
+ * Верифікація роботи функції {@link get_matrix_transponent}
+ * на основі вхідних та очікуваних даних
+ *
+ * @return стан проходження тестів: 1 - тести пройшли успішно, 0 - частина
+ * тестів не пройшла
+ */
 START_TEST(test_get_matrix_transponent) {
 
   float **matrix = NULL;
@@ -41,6 +57,13 @@ START_TEST(test_get_matrix_transponent) {
 }
 END_TEST
 
+/**
+ * Верифікація роботи функції {@link randomizer}
+ * на основі вхідних та очікуваних даних
+ *
+ * @return стан проходження тестів: 1 - тести пройшли успішно, 0 - частина
+ * тестів не пройшла
+ */
 START_TEST(test_randomizer) {
 
   float max = 1000, min = -1000;
@@ -57,6 +80,17 @@ START_TEST(test_randomizer) {
 }
 END_TEST
 
+/**
+ * Точка входу модуля тестування.
+ *
+ * Запускає розроблені функції верифікації функцій пошуку транспонованої матриці
+ *
+ * По завершенню тестів виводиться на екран резуміюча інформація про стан
+ * проходження тестів.
+ *
+ * @return стан проходження тестів: 1 - тести пройшли успішно, 0 - частина
+ * тестів не пройшла
+ */
 int main(void) {
   Suite *s = suite_create("Programing");
   TCase *tc_core = tcase_create("Lab-11");

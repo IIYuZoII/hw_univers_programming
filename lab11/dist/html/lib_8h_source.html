@@ -1,0 +1,104 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Взаємодія з користувачем шляхом механізму введення/виведення: Текст програми src/lib.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Взаємодія з користувачем шляхом механізму введення/виведення
+   &#160;<span id="projectnumber">11</span>
+   </div>
+   <div id="projectbrief">Визначити транспоновану матрицю. Використовувати механізм введення/виведення</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Створено системою Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'Пошук','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','Пошук');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">lib.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="lib_8h.html">Див. документацію.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160; </div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#include &lt;fcntl.h&gt;</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#include &lt;stdio.h&gt;</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#include &lt;stdlib.h&gt;</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#include &lt;string.h&gt;</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor">#include &lt;time.h&gt;</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="preprocessor">#include &lt;unistd.h&gt;</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160; </div>
+<div class="line"><a name="l00021"></a><span class="lineno"><a class="line" href="lib_8h.html#aae2a7100eafb935a1d8d48c4bbcdc34a">   21</a></span>&#160;<span class="preprocessor">#define MAX_RANGE_FOR_MATRIX 11</span></div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160; </div>
+<div class="line"><a name="l00027"></a><span class="lineno"><a class="line" href="lib_8h.html#a2382834b6755f738a2c19860269223a1">   27</a></span>&#160;<span class="preprocessor">#define MIN_RANGE_FOR_MATRIX 1</span></div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160; </div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="keywordtype">int</span> <a class="code" href="lib_8h.html#a452401f82fe9c8e08a03f75f8c0ee2e8">read_info_from_file</a>();</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160; </div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="keywordtype">int</span> <a class="code" href="lib_8h.html#acd9aa22263934ba32569eccf8a18c3e7">printer_scanner</a>(<span class="keywordtype">unsigned</span> *rows, <span class="keywordtype">unsigned</span> *columns);</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160; </div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;<span class="keywordtype">float</span> <a class="code" href="lib_8h.html#ab160b5fd3ebf172c041282b19adc3432">randomizer</a>(<span class="keywordtype">float</span> max, <span class="keywordtype">float</span> min, <span class="keywordtype">int</span> random_temp);</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160; </div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;<span class="keywordtype">void</span> <a class="code" href="lib_8h.html#a6adb2bba8cf620f2bd746fe4880fb443">get_matrix_transponent</a>(<span class="keywordtype">float</span> **matrix, <span class="keywordtype">float</span> **matrix_transparent,</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;                            <span class="keywordtype">unsigned</span> rows, <span class="keywordtype">unsigned</span> columns);</div>
+<div class="ttc" id="alib_8h_html_a452401f82fe9c8e08a03f75f8c0ee2e8"><div class="ttname"><a href="lib_8h.html#a452401f82fe9c8e08a03f75f8c0ee2e8">read_info_from_file</a></div><div class="ttdeci">int read_info_from_file()</div><div class="ttdoc">Функція зчитує дані з файлу</div><div class="ttdef"><b>Definition:</b> lib.c:14</div></div>
+<div class="ttc" id="alib_8h_html_a6adb2bba8cf620f2bd746fe4880fb443"><div class="ttname"><a href="lib_8h.html#a6adb2bba8cf620f2bd746fe4880fb443">get_matrix_transponent</a></div><div class="ttdeci">void get_matrix_transponent(float **matrix, float **matrix_transparent, unsigned rows, unsigned columns)</div><div class="ttdoc">Визначення транспонованої матриці</div><div class="ttdef"><b>Definition:</b> lib.c:81</div></div>
+<div class="ttc" id="alib_8h_html_ab160b5fd3ebf172c041282b19adc3432"><div class="ttname"><a href="lib_8h.html#ab160b5fd3ebf172c041282b19adc3432">randomizer</a></div><div class="ttdeci">float randomizer(float max, float min, int random_temp)</div><div class="ttdoc">функція для рандомного визначення числа та його знаку (+ чи -)</div><div class="ttdef"><b>Definition:</b> lib.c:73</div></div>
+<div class="ttc" id="alib_8h_html_acd9aa22263934ba32569eccf8a18c3e7"><div class="ttname"><a href="lib_8h.html#acd9aa22263934ba32569eccf8a18c3e7">printer_scanner</a></div><div class="ttdeci">int printer_scanner(unsigned *rows, unsigned *columns)</div><div class="ttdoc">функція для отримання від користувача розмірів матриці</div><div class="ttdef"><b>Definition:</b> lib.c:36</div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Створено системою&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

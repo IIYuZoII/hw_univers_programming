@@ -1,0 +1,16 @@
+digraph "main"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node1 [label="main",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip="Головна функція"];
+  Node1 -> Node2 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node2 [label="get_matrix_transponent",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$lib_8c.html#a6adb2bba8cf620f2bd746fe4880fb443",tooltip="Визначення транспонованої матриці"];
+  Node1 -> Node3 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node3 [label="printer_scanner",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$lib_8c.html#acd9aa22263934ba32569eccf8a18c3e7",tooltip="функція для отримання від користувача розмірів матриці"];
+  Node1 -> Node4 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node4 [label="randomizer",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$lib_8c.html#ab160b5fd3ebf172c041282b19adc3432",tooltip="функція для рандомного визначення числа та його знаку (+ чи -)"];
+  Node1 -> Node5 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node5 [label="read_info_from_file",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$lib_8c.html#a452401f82fe9c8e08a03f75f8c0ee2e8",tooltip="Функція зчитує дані з файлу"];
+}

@@ -1,10 +1,23 @@
+/**
+ * @file test.c
+ * @brief Файл з тестом на реалізацію функції визначення кількості слів у строчці
+ *
+ * @author Sylka Michael
+ * @date 17-may-2022
+ * @version 1.0
+ */
+
 #include "../src/lib.h"
 #include <check.h>
 
+/**
+ * Верифікація роботи функції {@link find_count_words_in_line}
+ * на основі вхідних та очікуваних даних
+ *
+ * @return стан проходження тестів: 1 - тести пройшли успішно, 0 - частина
+ * тестів не пройшла
+ */
 START_TEST(test_find_count_words_in_line) {
-  // int a[] = {0, 1, 2, 3, 4, 5};
-  // int *data_a = &a[0];
-  // int data_b = 6;
   char data_a[] = "PFkfeew wepfkw oewofjewf wefwiepfn 113r1 pwinfw pwiefn   "
                   ",,,, qwdq ...  wpefj 1 2 !# *";
   int expected = 8;
@@ -13,9 +26,21 @@ START_TEST(test_find_count_words_in_line) {
 }
 END_TEST
 
+/**
+ * Точка входу модуля тестування.
+ *
+ * Запускає розроблену функцію верифікації функції визначення кількості слів у
+ * строчці
+ *
+ * По завершенню тестів виводиться на екран резуміюча інформація про стан
+ * проходження тестів.
+ *
+ * @return стан проходження тестів: 1 - тести пройшли успішно, 0 - частина
+ * тестів не пройшла
+ */
 int main(void) {
   Suite *s = suite_create("Programing");
-  TCase *tc_core = tcase_create("Lab-09");
+  TCase *tc_core = tcase_create("Lab-12");
 
   tcase_add_test(tc_core, test_find_count_words_in_line);
   suite_add_tcase(s, tc_core);

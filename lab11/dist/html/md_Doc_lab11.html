@@ -1,0 +1,178 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Взаємодія з користувачем шляхом механізму введення/виведення: Лабораторна робота №11. Взаємодія з користувачем шляхом механізму введення/виведення</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Взаємодія з користувачем шляхом механізму введення/виведення
+   &#160;<span id="projectnumber">11</span>
+   </div>
+   <div id="projectbrief">Визначити транспоновану матрицю. Використовувати механізм введення/виведення</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Створено системою Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'Пошук','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','Пошук');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+</div><!-- top -->
+<div class="PageDoc"><div class="header">
+  <div class="headertitle">
+<div class="title">Лабораторна робота №11. Взаємодія з користувачем шляхом механізму введення/виведення </div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><h1><a class="anchor" id="autotoc_md1"></a>
+1 Вимоги</h1>
+<h2><a class="anchor" id="autotoc_md2"></a>
+1.1 Розробник</h2>
+<ul>
+<li>Силка Михайло Миколайович;</li>
+<li>студент групи КН-921Г;</li>
+<li>17-тра-2022.</li>
+</ul>
+<h2><a class="anchor" id="autotoc_md3"></a>
+1.2 Загальне завдання</h2>
+<p>Розробити програму з використанням механізму введення/виведення</p>
+<h2><a class="anchor" id="autotoc_md4"></a>
+1.3 Індивідуальне завдання</h2>
+<p>Створити програму яка визначає транспоновану матрицю від матриці розміри якої отримані від користувача</p>
+<h1><a class="anchor" id="autotoc_md5"></a>
+2 Опис програми</h1>
+<h2><a class="anchor" id="autotoc_md6"></a>
+2.1 Функціональне призначення</h2>
+<p>Програма призначена для визначення транспонованої матриці</p>
+<p>Результат зберігається у масиві <em>matrix_transparent</em></p>
+<p>Результат виводится у консоль</p>
+<h2><a class="anchor" id="autotoc_md7"></a>
+2.2 Опис логічної структури</h2>
+<p>Програма генеруює псевдо-рандомні значення для матриці з заданими користувачем шириною та висотою і транспонує її після чого виводить результат у консоль</p>
+<h3><a class="anchor" id="autotoc_md8"></a>
+2.2.1 Основна функція</h3>
+<div class="fragment"><div class="line">int main()</div>
+</div><!-- fragment --><p><em>Призначення</em>: головна функція.</p>
+<p><em>Опис роботи</em>:</p><ul>
+<li>Виклик функції <em>int <a class="el" href="lib_8c.html#a452401f82fe9c8e08a03f75f8c0ee2e8" title="Функція зчитує дані з файлу">read_info_from_file()</a></em> для зчитування даних про автора програми</li>
+<li>Виклик функції <em>int <a class="el" href="lib_8h.html#acd9aa22263934ba32569eccf8a18c3e7" title="функція для отримання від користувача розмірів матриці">printer_scanner(unsigned *rows, unsigned *columns)</a></em> для отримання від користувача розмірів матриці</li>
+<li>Ініціалізація двумірного масиву <em>matrix</em> за допомогою функції <em>float <a class="el" href="lib_8h.html#ab160b5fd3ebf172c041282b19adc3432" title="функція для рандомного визначення числа та його знаку (+ чи -)">randomizer(float max, float min, int random_temp)</a></em> та <em>matrix_transparent</em></li>
+<li>Виклик функції <em>void <a class="el" href="lib_8h.html#a6adb2bba8cf620f2bd746fe4880fb443" title="Визначення транспонованої матриці">get_matrix_transponent(float **matrix, float **matrix_transparent, unsigned rows, unsigned columns)</a></em></li>
+<li>Звільнення пам'яті</li>
+</ul>
+<h3><a class="anchor" id="autotoc_md9"></a>
+2.2.2</h3>
+<div class="fragment"><div class="line">int read_info_from_file()</div>
+</div><!-- fragment --><p><em>Призначення</em>: зчитування данних про автора з файлу та вивід їх у консоль</p>
+<h3><a class="anchor" id="autotoc_md10"></a>
+2.2.3</h3>
+<div class="fragment"><div class="line">int printer_scanner(unsigned *rows, unsigned *columns)</div>
+</div><!-- fragment --><p><em>Призначення</em>: отримання данних від користувача</p>
+<p><em>Опис роботи</em>: виконує отримання данних від користувача за допомогою мехнанізму введення/виведення</p>
+<h3><a class="anchor" id="autotoc_md11"></a>
+2.2.4</h3>
+<div class="fragment"><div class="line">float randomizer(float max, float min, int random_temp)</div>
+</div><!-- fragment --><p><em>Призначення</em>: генерація чисел</p>
+<p><em>Опис роботи</em>: генерує псевдо-рандомні числа в діапазоні залежному від отриманих аргументів</p>
+<h3><a class="anchor" id="autotoc_md12"></a>
+2.2.5</h3>
+<div class="fragment"><div class="line">void get_matrix_transponent(float **matrix, float **matrix_transparent, unsigned rows, unsigned columns)</div>
+</div><!-- fragment --><p><em>Призначення</em>: визначення транспонованної матриці</p>
+<p><em>Опис роботи</em>: визначає транспоновану матрицю та записує її у масив <em>matrix_transparent</em> а також виводить результать у консоль</p>
+<h3><a class="anchor" id="autotoc_md13"></a>
+2.2.3 Структура проекту</h3>
+<div class="fragment"><div class="line">lab11</div>
+<div class="line">├── assets</div>
+<div class="line">│   └── input.txt</div>
+<div class="line">├── Doc</div>
+<div class="line">│   └── lab11.md</div>
+<div class="line">├── Doxyfile</div>
+<div class="line">├── Makefile</div>
+<div class="line">├── src</div>
+<div class="line">│   ├── lib.c</div>
+<div class="line">│   ├── lib.h</div>
+<div class="line">│   └── main.c</div>
+<div class="line">└── test</div>
+<div class="line">    └── test.c</div>
+</div><!-- fragment --><h1><a class="anchor" id="autotoc_md14"></a>
+Варіант використання</h1>
+<p>Для демонстрації результатів задачі використовується:</p>
+<ul>
+<li>вивід інформації у консоль</li>
+</ul>
+<p><b>Варіант використання</b></p>
+<ul>
+<li>запустити програму</li>
+<li>ввести необхідні дані</li>
+</ul>
+<div class="fragment"><div class="line">yuzo@yuzo-VirtualBox:~/programming/workTemp/hw_univers_programming/lab11/dist$ ./main.bin </div>
+<div class="line">Лабораторна робота №11 Виконавець: Силка Михайло</div>
+<div class="line">Введите кол-во строк матрицы (не более 11): 3</div>
+<div class="line">Введите кол-во столбцов матрицы (не более 11): 4</div>
+<div class="line"> </div>
+<div class="line"> </div>
+<div class="line">Введённая матрица:</div>
+<div class="line">[       -474.23         -622.35         -332.04         516.38  ]</div>
+<div class="line">[       -413.56         575.43          427.24          -0.48   ]</div>
+<div class="line">[       391.12          -425.33         -13.72          -1.06   ]</div>
+<div class="line"> </div>
+<div class="line"> </div>
+<div class="line">Транспонированная матрица:</div>
+<div class="line">[       -474.23         -413.56         391.12  ]</div>
+<div class="line">[       -622.35         575.43          -425.33 ]</div>
+<div class="line">[       -332.04         427.24          -13.72  ]</div>
+<div class="line">[       516.38          -0.48           -1.06   ]</div>
+</div><!-- fragment --><h1><a class="anchor" id="autotoc_md15"></a>
+Висновки</h1>
+<p>При виконанні даної лабораторної роботи я навчився працювати з механізмами введення/виведення інформації </p>
+</div></div><!-- contents -->
+</div><!-- PageDoc -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Створено системою&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>
