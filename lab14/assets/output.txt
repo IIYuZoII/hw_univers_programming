@@ -1,0 +1,11 @@
+Message formatted line is: 
+sender3 reciever3 theme3 text3
+
+All messages from specific user 'sender4' 'sendermail4': 
+text_one
+text_two
+text_three
+
+
+Lenght of all messages in file 'assets/input.txt': 40
+

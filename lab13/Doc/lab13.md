@@ -48,7 +48,7 @@ int main()
  - виклик функції {@link int write_to_file(FILE *f, int rows, int columns, char *s)} для запису трикутника у вихідний файл
  - закриття вихідного файлу
 
- #### 2.2.2 Функція введення трикутника у файл
+#### 2.2.2 Функція введення трикутника у файл
 
  ```
 int write_to_file(FILE *f, int rows, int columns, char *s)
