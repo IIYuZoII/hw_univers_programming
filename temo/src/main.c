@@ -4,63 +4,93 @@
 #include <stdlib.h>
 #include <string.h>
 
+
+
 struct people {
-      char *name;
-      char *mail_name;
-}; 
+  int index;
+  char *name;
+};
 
-
-struct mail {
-    bool is_mail_note;
-    char *msg_theme;
-    char *msg_text;
-
-    struct people sender;
-    struct people reciever;
-
-    char *format;
+struct list {
+  struct people x;
+  struct list *next;
 };
 
 
 
-void msg_format (struct mail info_for_msg_f);
 
-int main (){
+int main () {
+  struct list *sub = (struct list *)malloc(1 * sizeof (struct list));
+  sub->x.name = (char *)malloc(50 * sizeof (char));
 
-    // робота з файлами
-  FILE *fpInput = fopen("../assets/input.txt", "r");
-  FILE *fpOutput = fopen("../assets/output.txt", "w");
+  struct list *ptr = (struct list *)malloc(1 * sizeof (struct list));
 
-  // кількість об'єктів структур
-  int count = 3;
+  ptr = sub;
 
-  size_t n = 3;
 
-  // виділення пам'яті для структури
-  struct mail *array = (struct mail *)malloc(sizeof(struct mail) * (unsigned long)count);
+  sub->x.index = 0;
 
-  for (int i = 0; i < count; i++) {
-    (array + i)->msg_text = (char *)malloc(sizeof(char) * 50);
-    (array + i)->msg_theme = (char *)malloc(sizeof(char) * 50);
-    (array + i)->format = (char *)malloc(sizeof(char) * 50);
+  printf ("Первый элемент: %d\n", sub->x.index);
 
-    (array + i)->sender.name = (char *)malloc(sizeof(char) * 50);
-    (array + i)->sender.mail_name = (char *)malloc(sizeof(char) * 50);
+  int temp = 0;
 
-    (array + i)->reciever.mail_name = (char *)malloc(sizeof(char) * 50);
-    (array + i)->reciever.name = (char *)malloc(sizeof(char) * 50);
+
+  //Алгоритм добавления элемента (в конец списка)
+  for (int i = 0; i < 10; i++){
+    temp++;
+    ptr->next = (struct list *)malloc(1 * sizeof (struct list)); //сейчас он указывает на предидущий элемент списка
+
+    ptr = ptr->next; //теперь он указывает на текущий элемент списка
+
+    ptr->x.name = (struct people *)malloc(50 * sizeof (struct people));
+    strcpy (ptr->x.name, "Name");
+    ptr->x.index = temp;
+    printf ("Текущий индекс: %d\nString is: %s\n", ptr->x.index, ptr->x.name);
+
   }
 
-    // msg_format()
-}
 
 
-void msg_format (struct mail info_for_msg_f){
-    int buff;
-    char *text = strdup(info_for_msg_f.sender.name);
+//   ptr = sub->next; //Возврат на второй элемент
+//   ptr = sub; //Возврат на первый элемент
+//   for (int i = 0; i < 10; i++){
+//     //   printf ("Текущий х.name в другом цикле: %d\n", ptr->x.name);
+
+//     if (i == 1){
+//       printf ("х.name #2: %d\n", ptr->x.name);
+//     }
+//     printf ("Index: %d\n", ptr->x.index);
+
+//     ptr = ptr->next;
     
-    char *text2 = strcat(text, info_for_msg_f.sender.mail_name);
-    // char *formatted_msg;
+//   }
+
+ 
+  //Хочу удалить 8 элемент
+  ptr = sub;
+//   int *temp_temp = ptr;
+  struct list *temp_ptr = (struct list *)malloc(1 * sizeof (struct list));
+  for (int i = 0; i < 10; i++){
+    temp_ptr = ptr; //Равен предидущему объекту от того который нужно удалить
+    ptr = ptr->next; //Переход на следующий оюъект
+    if (i == 7){ //Нашли 8 элемент
+        ptr = ptr->next; //Перешли на след элемент
+        temp_ptr->next = ptr; //Записали в 7 элемент адресс 9-го
+        printf ("Current object is: %d\n", ptr->x.index);
+        break;
+    }
+  }
+
+  ptr = sub;
+  for (int i = 0; i < 9; i++){
+      printf("List of indexes: %d\n", ptr->x.index);
+      ptr = ptr->next;
+  }
+
+
+//   ptr->next = (struct list *)malloc(1 * sizeof (struct list));
+//   ptr = ptr->next;
+
 
 
 

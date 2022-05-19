@@ -3,6 +3,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <assert.h>
 
 /**
  * @brief Структура "Людина"
@@ -28,7 +29,7 @@ struct mail {
   char *format;
 };
 
-void printer_scanner(struct mail *array, int k, int count, int pos);
+void printer_scanner(struct mail *array, int k, int count);
 
 /**
  * @brief Функція пошуку всіх повідомлень від конкретної людини
@@ -43,4 +44,9 @@ void printer_scanner(struct mail *array, int k, int count, int pos);
 void msg_find(struct mail *msgs, int count_mails, char *sender,
               char *sender_mail, char *msg_line_res);
 
-void add_elem_in_array(struct mail *array, struct mail *array2, int count);
+
+void add_elem_in_array(struct mail *array, int count, int pos);
+
+
+//void add_elem_in_array(struct mail *array, struct mail *array2, int count, int pos);
+

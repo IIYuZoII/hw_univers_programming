@@ -28,6 +28,15 @@ int main() {
   int k = 0;
   printer_scanner(array, k, count);
 
+  // i = 0;
+  // while (i < count) {
+  //   printf("%d\n%s\n", (array + i)->is_mail_note, (array + i)->msg_theme);
+  //     printf("%s\n%s\n%s\n%s\n%s\n%s\n", (array + i)->msg_text,
+  //            (array + i)->sender.name, (array + i)->sender.mail_name,
+  //            (array + i)->reciever.name, (array + i)->reciever.mail_name,
+  //            (array + i)->format);
+  //   i++;
+  // }
   // for(int i = 0; i < count; i++) {
   //     printf("Сообщение черновик? (0 - да, 1 - нет):\n");
   //     scanf("%d", &((array + i)->is_mail_note));
@@ -47,17 +56,29 @@ int main() {
   //     printf("\n");
   // }
 
-  count += 1;
   int pos = count;
-  struct mail *array2 =
-      (struct mail *)malloc((unsigned long)count * sizeof(struct mail));
+  count += 1;
+  // struct mail *array2 =
+      // (struct mail *)malloc((unsigned long)count * sizeof(struct mail));
 
 
-  add_elem_in_array(array, array2, count, pos);
+  // add_elem_in_array(array, array2, count, pos);
+  add_elem_in_array(array, count, pos);
 
-//   printf("Введите данные для добавленного объекта:\n");
-//   k = count - 1;
-//   printer_scanner(array, k, count);
+  i = 0;
+  // while (i < count) {
+  //   printf("%d\n%s\n", (array + i)->is_mail_note, (array + i)->msg_theme);
+  //     printf("%s\n%s\n%s\n%s\n%s\n%s\n", (array + i)->msg_text,
+  //            (array + i)->sender.name, (array + i)->sender.mail_name,
+  //            (array + i)->reciever.name, (array + i)->reciever.mail_name,
+  //            (array + i)->format);
+  //   i++;
+  // }
 
+  printf("Введите данные для добавленного объекта:\n");
+  k = count - 1;
+  printer_scanner(array, k, count);
+
+  
   return (0);
 }

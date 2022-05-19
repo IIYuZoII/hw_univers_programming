@@ -12,7 +12,7 @@
 int write_to_file(FILE *f, int rows, int columns, char *s) {
 
   int i, j, t = 1, k, tf = 0, space;
-  if (rows >= columns || rows == 1) {
+  if (rows >= columns || rows < 2) {
     printf("\nIncorrect data, please open program again and write correct data "
            "(rows < columns & rows > 1)\n");
     return (1);
@@ -22,7 +22,7 @@ int write_to_file(FILE *f, int rows, int columns, char *s) {
     rows--;
     tf = 1;
   }
-
+  int counter = 0;
   for (i = 1; i <= rows; i++) {
     k = 0;
     for (space = 1; space < columns - i; space++) {
@@ -33,12 +33,15 @@ int write_to_file(FILE *f, int rows, int columns, char *s) {
     while (k < t) {
       printf("%c ", *s);
       fprintf(f, "%c ", *s);
+      counter++;
       k++;
     }
     t += 2;
     printf("\n");
     fprintf(f, "\n");
   }
+
+  printf ("\nCounter: %d\n\n", counter)
   if (t < columns || tf == 1) {
     printf("Program can't write full triangle\n");
     fprintf(f, "Program can't write full triangle");
