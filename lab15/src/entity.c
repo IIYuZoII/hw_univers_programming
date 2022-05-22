@@ -134,17 +134,28 @@ void add_elem_in_array(struct mail *array, int count, int pos) {
 
   }
 
+  // array = (struct mail *)realloc((unsigned long)count, sizeof(struct mail));
+  // for (int i = 0; i < count; i++) {
+  //   (array + i)->msg_text = (char *)realloc((array + i)->msg_text, sizeof(char) * 50);
+  //   (array + i)->msg_theme = (char *)realloc((array + i)->msg_theme, sizeof(char) * 50);
+  //   (array + i)->format = (char *)realloc((array + i)->format, sizeof(char) * 50);
+  //   (array + i)->sender.name = (char *)realloc((array + i)->sender.name, sizeof(char) * 50);
+  //   (array + i)->sender.mail_name = (char *)realloc((array + i)->sender.mail_name, sizeof(char) * 50);
+  //   (array + i)->reciever.name = (char *)realloc((array + i)->reciever.name, sizeof(char) * 50);
+  //   (array + i)->reciever.mail_name = (char *)realloc((array + i)->reciever.mail_name, sizeof(char) * 50);
+  // }
 
-  for (int i = 0; i < count - 1; i++) {
-    (array + i)->is_mail_note = (array2 + i)->is_mail_note;
-    strcpy((array + i)->msg_theme, (array2 + i)->msg_theme);
-    strcpy((array + i)->msg_text, (array2 + i)->msg_text);
-    strcpy((array + i)->sender.name, (array2 + i)->sender.name);
-    strcpy((array + i)->sender.mail_name, (array2 + i)->sender.mail_name);
-    strcpy((array + i)->reciever.name, (array2 + i)->reciever.name);
-    strcpy((array + i)->reciever.mail_name, (array2 + i)->reciever.mail_name);
-    strcpy((array + i)->format, (array2 + i)->format);
-  }
+
+  // for (int i = 0; i < count - 1; i++) {
+  //   (array + i)->is_mail_note = (array2 + i)->is_mail_note;
+  //   strcpy((array + i)->msg_theme, (array2 + i)->msg_theme);
+  //   strcpy((array + i)->msg_text, (array2 + i)->msg_text);
+  //   strcpy((array + i)->sender.name, (array2 + i)->sender.name);
+  //   strcpy((array + i)->sender.mail_name, (array2 + i)->sender.mail_name);
+  //   strcpy((array + i)->reciever.name, (array2 + i)->reciever.name);
+  //   strcpy((array + i)->reciever.mail_name, (array2 + i)->reciever.mail_name);
+  //   strcpy((array + i)->format, (array2 + i)->format);
+  // }
 
   // for (int i = 0; i < count; i++){
   //   assert((array + i)->msg_theme);
@@ -193,14 +204,4 @@ void add_elem_in_array(struct mail *array, int count, int pos) {
   // }
 
 
-//   for (int i = 0; i < count - 1; i++) {
-//     (array2 + i)->is_mail_note = (array + i)->is_mail_note;
-//     strcpy((array2 + i)->msg_theme, (array + i)->msg_theme);
-//     strcpy((array2 + i)->msg_text, (array + i)->msg_text);
-//     strcpy((array2 + i)->sender.name, (array + i)->sender.name);
-//     strcpy((array2 + i)->sender.mail_name, (array + i)->sender.mail_name);
-//     strcpy((array2 + i)->reciever.name, (array + i)->reciever.name);
-//     strcpy((array2 + i)->reciever.mail_name, (array + i)->reciever.mail_name);
-//     strcpy((array2 + i)->format, (array + i)->format);
-//   }
 }
