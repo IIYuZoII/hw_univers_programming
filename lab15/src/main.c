@@ -1,84 +1,146 @@
+/**
+ * @mainpage
+ * # Загальне завдання
+ * **Створити** програму для роботи зі структурами даних та файлами
+ *
+ * @author Sylka Michael
+ * @date 23-may-2022
+ * @version 1.0
+ */
+
+/**
+ * @file main.c
+ * @brief Точка входу програми
+ *
+ * @author Sylka Michael
+ * @date 23-may-2022
+ * @version 1.0
+ */
+
 #include "entity.h"
 #include "list.h"
 
-int main() {
-  int i;
 
-  int count;
-  printf("Введите кол-во объектов: ");
+/**
+ * @brief Головна функція 
+ * 
+ * Послідовність дій:
+ * - Виділення пам'яті
+ * - Взаємодія з користувачем та робота зі структурами на базі отриманих даних від користувача
+ * - Звільнення пам'яті
+ * @return int 0 при завершенні програми
+ */
+int main() {
+  int k = 0;
+
+  int count, count_of_added_elements, choice_for_delete, index_for_delete, choice;
+
+  char *senderName = (char *)malloc(50 * sizeof(char));
+  char *senderMailName = (char *)malloc(50 * sizeof(char));
+  char *all_msgs = (char *)malloc(50 * sizeof(char));
+
+
+  printf("Введите кол-во элементов: ");
   scanf("%d", &count);
 
-  char *msg_from_specific_user = (char *)malloc(500 * sizeof(char));
-  char *specific_sender = (char *)malloc(50 * sizeof(char));
-  char *specific_sender_mail = (char *)malloc(50 * sizeof(char));
+  struct mail *array = (struct mail *)malloc((unsigned long)count * sizeof(struct mail));
+  create_objects (array, count);
 
-  struct mail *array =
-      (struct mail *)malloc((unsigned long)count * sizeof(struct mail));
-  for (i = 0; i < count; i++) {
-    (array + i)->msg_text = (char *)malloc(sizeof(char) * 50);
-    (array + i)->msg_theme = (char *)malloc(sizeof(char) * 50);
-    (array + i)->format = (char *)malloc(sizeof(char) * 50);
-    (array + i)->sender.name = (char *)malloc(sizeof(char) * 50);
-    (array + i)->sender.mail_name = (char *)malloc(sizeof(char) * 50);
-    (array + i)->reciever.name = (char *)malloc(sizeof(char) * 50);
-    (array + i)->reciever.mail_name = (char *)malloc(sizeof(char) * 50);
+
+  printf("\nВведите данные элементов:\n\n");
+  printer_scanner(array, k, count);
+
+
+  printf ("\nТекущий список элементов:\n");
+  printer (array, count);
+
+
+  printf("\nВы хотите добавить элемнты?\n0 - Нет\n1 - Да\n");
+  scanf ("%d", &choice);
+  if (choice == 1){
+    printf("\nВведите кол-во новых элементов: \n");
+    scanf("%d", &count_of_added_elements);
+    count +=  count_of_added_elements;
+
+    if (count_of_added_elements > 0){
+      array = (struct mail *)realloc(array, (unsigned long)count * sizeof(struct mail));
+      create_objects (array, count);
+    }
+
+    k = count - count_of_added_elements;
+    printer_scanner(array, k, count);
+
+    printf ("\nТекущий список элементов после добавления новых:\n");
+    printer (array, count);
   }
 
-  printf("Введите данные объектов:\n");
-  int k = 0;
-  printer_scanner(array, k, count);
 
-  // i = 0;
-  // while (i < count) {
-  //   printf("%d\n%s\n", (array + i)->is_mail_note, (array + i)->msg_theme);
-  //     printf("%s\n%s\n%s\n%s\n%s\n%s\n", (array + i)->msg_text,
-  //            (array + i)->sender.name, (array + i)->sender.mail_name,
-  //            (array + i)->reciever.name, (array + i)->reciever.mail_name,
-  //            (array + i)->format);
-  //   i++;
-  // }
-  // for(int i = 0; i < count; i++) {
-  //     printf("Сообщение черновик? (0 - да, 1 - нет):\n");
-  //     scanf("%d", &((array + i)->is_mail_note));
-  //     printf("Тема сообщения:\n");
-  //     scanf("%s", &((array + i)->msg_theme));
-  //     printf("Текст сообщения (в данной версии программы пробелы
-  //     запрещенны)\n"); scanf("%d", &((array + i)->msg_text)); printf("Имя
-  //     отправителя:\n"); scanf("%s", &((array + i)->sender.name));
-  //     printf("Адрес почты отправителя:\n");
-  //     scanf("%s", &((array + i)->sender.mail_name));
-  //     printf("Имя получателя:\n");
-  //     scanf("%s", &((array + i)->reciever.name));
-  //     printf("Адрес почты получателя:\n");
-  //     scanf("%s", &((array + i)->reciever.mail_name));
-  //     printf("Формат текста:\n");
-  //     scanf("%s", &((array + i)->format));
-  //     printf("\n");
-  // }
+  if (count > 1){
+    printf ("Вы хотите удалить элемент?\n0 - Нет\n1 - Да\n");
+    scanf ("%d", &choice);
+    if (choice == 1){
+      printf ("Введите индекс удаляемого объекта: ");
+      scanf ("%d", &index_for_delete);
 
-  int pos = count;
-  count += 1;
-  // struct mail *array2 =
-      // (struct mail *)malloc((unsigned long)count * sizeof(struct mail));
+      while (index_for_delete > count - 1){
+        printf ("\nВведённый индекс больше чем максимальный: %d\nПопробуйте сноа: ", (count - 1));
+        scanf ("%d", &index_for_delete);
+      }
 
+      delete_object (array, count, index_for_delete);
+      count--;
+      array = (struct mail *)realloc(array, (unsigned long)count * sizeof(struct mail));
 
-  // add_elem_in_array(array, array2, count, pos);
-  add_elem_in_array(array, count, pos);
-
-  i = 0;
-  // while (i < count) {
-  //   printf("%d\n%s\n", (array + i)->is_mail_note, (array + i)->msg_theme);
-  //     printf("%s\n%s\n%s\n%s\n%s\n%s\n", (array + i)->msg_text,
-  //            (array + i)->sender.name, (array + i)->sender.mail_name,
-  //            (array + i)->reciever.name, (array + i)->reciever.mail_name,
-  //            (array + i)->format);
-  //   i++;
-  // }
-
-  printf("Введите данные для добавленного объекта:\n");
-  k = count - 1;
-  printer_scanner(array, k, count);
+      printf ("Список объектов после удаления элемента с индексом '%d'\n", index_for_delete);
+      printer (array, count);
+    }
+  }
+  
 
   
+  if (count > 1){
+    printf ("Вы хотите отсортировать элементы?\n0 - Нет\n1 - Да\n");
+    scanf ("%d", &choice);
+    if (choice == 1){
+      printf ("\nВыберите за каким полем сортировать: \n1 - Имя отправителя \n2 - Почта отправителя \n3 - Имя получателя \n4 - Почта получателя\n");
+      scanf ("%d", &choice);
+      
+      sorting (array, count, choice);
+
+      printf ("Результат сортировки:\n");
+      printer (array, count);
+    }
+  }
+
+
+  if (count > 1){
+    printf ("Вы хотите вывести все сообщения от конкретного пользователя?\n0 - Нет\n1 - Да\n");
+    scanf ("%d", &choice);
+    if (choice == 1){
+      printf ("\nВведите имя отправителя:\n");
+      scanf ("%s", senderName);
+      printf ("\nВведите адрес почты:\n");
+      scanf ("%s", senderMailName);
+
+      msg_find (array, count, senderName, senderMailName, all_msgs);
+    }
+  }
+
+
+
+  free (senderName);
+  free (senderMailName);
+  free (all_msgs);
+  for (int i = 0; i < count; i++) {
+    free((array + i)->msg_theme);
+    free((array + i)->msg_text);
+    free((array + i)->sender.name);
+    free((array + i)->sender.mail_name);
+    free((array + i)->reciever.name);
+    free((array + i)->reciever.mail_name);
+    free((array + i)->format);
+  }
+  free (array);
+
   return (0);
 }
