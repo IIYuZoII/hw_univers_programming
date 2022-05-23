@@ -6,12 +6,16 @@ int main() {
 
   int count, count_of_added_elements, choice_for_delete, index_for_delete, choice;
 
+  char *senderName = (char *)malloc(50 * sizeof(char));
+  char *senderMailName = (char *)malloc(50 * sizeof(char));
+  char *all_msgs = (char *)malloc(50 * sizeof(char));
+
 
   printf("Введите кол-во элементов: ");
   scanf("%d", &count);
 
   struct mail *array = (struct mail *)malloc((unsigned long)count * sizeof(struct mail));
-  create_first_objects (array, count);
+  create_objects (array, count);
 
 
   printf("\nВведите данные элементов:\n\n");
@@ -31,7 +35,7 @@ int main() {
 
     if (count_of_added_elements > 0){
       array = (struct mail *)realloc(array, (unsigned long)count * sizeof(struct mail));
-      create_first_objects (array, count);
+      create_objects (array, count);
     }
 
     k = count - count_of_added_elements;
@@ -79,6 +83,26 @@ int main() {
     }
   }
 
+
+  if (count > 1){
+    printf ("Вы хотите вывести все сообщения от конкретного пользователя?\n0 - Нет\n1 - Да\n");
+    scanf ("%d", &choice);
+    if (choice == 1){
+      printf ("\nВведите имя отправителя:\n");
+      scanf ("%s", senderName);
+      printf ("\nВведите адрес почты:\n");
+      scanf ("%s", senderMailName);
+
+      msg_find (array, count, senderName, senderMailName, all_msgs);
+    }
+  }
+
+
+
+  free (senderName);
+  free (senderMailName);
+  free (all_msgs);
+  free (array);
 
   return (0);
 }

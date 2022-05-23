@@ -1,6 +1,6 @@
 #include "entity.h"
 
-void create_first_objects (struct mail *array, int count){
+void create_objects (struct mail *array, int count){
     for (int i = 0; i < count; i++) {
         (array + i)->index = i;
         (array + i)->msg_text = (char *)realloc((array + i)->msg_text, sizeof(char) * 150);
@@ -33,7 +33,6 @@ void sorting (struct mail *array, int count, int choice) {
 
     switch (choice) {
     case 1:
-        printf ("Case 1\n");
         for (int i = 0; i < count; i++){
             for (int j = 0; j < count - 1 - i; j++){
                 if (strcmp((array + j)->sender.name, (array + j + 1)->sender.name) > 0){
@@ -43,7 +42,6 @@ void sorting (struct mail *array, int count, int choice) {
         }
         break;
     case 2:
-        printf ("Case 2\n");
         for (int i = 0; i < count; i++){
             for (int j = 0; j < count - 1 - i; j++){
                 if (strcmp((array + j)->sender.mail_name, (array + j + 1)->sender.mail_name) > 0){
@@ -53,7 +51,6 @@ void sorting (struct mail *array, int count, int choice) {
         }
         break;
     case 3:
-        printf ("Case 3\n");
         for (int i = 0; i < count; i++){
             for (int j = 0; j < count - 1 - i; j++){
                 if (strcmp((array + j)->reciever.name, (array + j + 1)->reciever.name) > 0){
@@ -63,7 +60,6 @@ void sorting (struct mail *array, int count, int choice) {
         }
         break;
     case 4:
-        printf ("Case 4\n");
         for (int i = 0; i < count; i++){
             for (int j = 0; j < count - 1 - i; j++){
                 if (strcmp((array + j)->reciever.mail_name, (array + j + 1)->reciever.mail_name) > 0){
@@ -111,4 +107,22 @@ void sorting_machine (struct mail *array, int j) {
     (array + j + 1)->is_mail_note = t;
 
     free (temp);
+}
+
+
+
+void msg_find(struct mail *msgs, int count_mails, char *sender, char *sender_mail, char *msg_line_res){
+    int res, res2;
+    char space[] = "\n";
+
+    for (int i = 0; i < count_mails; i++) {
+
+        res2 = strcmp((msgs + i)->sender.name, sender);
+        res = strcmp((msgs + i)->sender.mail_name, sender_mail);
+        if (res == 0 && res2 == 0) {
+            strcat(msg_line_res, (msgs + i)->msg_text);
+            strcat(msg_line_res, space);
+        }
+    }
+    printf("Все сообщения от конкретного отправителя '%s' '%s': \n\n%s\n\n", sender, sender_mail, msg_line_res);
 }
