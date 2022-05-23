@@ -1,6 +1,35 @@
+/**
+ * @mainpage
+ * # Загальне завдання
+ * **Створити** програму для роботи зі структурами даних та файлами
+ *
+ * @author Sylka Michael
+ * @date 23-may-2022
+ * @version 1.0
+ */
+
+/**
+ * @file main.c
+ * @brief Точка входу програми
+ *
+ * @author Sylka Michael
+ * @date 23-may-2022
+ * @version 1.0
+ */
+
 #include "entity.h"
 #include "list.h"
 
+
+/**
+ * @brief Головна функція 
+ * 
+ * Послідовність дій:
+ * - Виділення пам'яті
+ * - Взаємодія з користувачем та робота зі структурами на базі отриманих даних від користувача
+ * - Звільнення пам'яті
+ * @return int 0 при завершенні програми
+ */
 int main() {
   int k = 0;
 
@@ -102,6 +131,15 @@ int main() {
   free (senderName);
   free (senderMailName);
   free (all_msgs);
+  for (int i = 0; i < count; i++) {
+    free((array + i)->msg_theme);
+    free((array + i)->msg_text);
+    free((array + i)->sender.name);
+    free((array + i)->sender.mail_name);
+    free((array + i)->reciever.name);
+    free((array + i)->reciever.mail_name);
+    free((array + i)->format);
+  }
   free (array);
 
   return (0);

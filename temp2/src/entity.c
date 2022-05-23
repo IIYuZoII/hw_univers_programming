@@ -1,3 +1,12 @@
+/**
+ * @file entity.c
+ * @brief Файл з реалізацією функцій для роботи зі структурами та файлами
+ *
+ * @author Sylka Michael
+ * @date 23-may-2022
+ * @version 1.0
+ */
+
 #include "entity.h"
 
 void create_objects (struct mail *array, int count){

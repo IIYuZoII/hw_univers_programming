@@ -1,3 +1,13 @@
+/**
+ * @file list.с
+ * @brief Файл з реалізацією функцій для механізму вводу/виведення
+ *
+ * @author Sylka Michael
+ * @date 23-may-2022
+ * @version 1.0
+ */
+
+
 #include "list.h"
 
 
